@@ -1,5 +1,5 @@
 <?php
-namespace Admin\Event;
+namespace UthandoAdmin\Event;
 
 use Zend\EventManager\EventManagerInterface;
 use Zend\EventManager\ListenerAggregateInterface;

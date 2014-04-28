@@ -1,5 +1,5 @@
 <?php
-namespace Admin;
+namespace UthandoAdmin;
 
 use Exception;
 

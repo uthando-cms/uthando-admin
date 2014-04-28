@@ -1,5 +1,5 @@
 <?php
-namespace Admin\Service;
+namespace UthandoAdmin\Service;
 
 use Zend\Navigation\Service\AbstractNavigationFactory;
 

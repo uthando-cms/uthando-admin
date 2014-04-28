@@ -2,6 +2,6 @@
 
 return array(
 	'factories' => array(
-		'Admin\Navigation' => 'Admin\Service\AdminNavigationFactory',
+		'UthandoAdmin\Navigation' => 'UthandoAdmin\Service\AdminNavigationFactory',
 	),
 );

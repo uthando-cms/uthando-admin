@@ -1,50 +1,54 @@
 <?php
 
-return array(
-	'admin_options' => array(
-		'default_route' => 'admin/application',
-	),
-	'userAcl' => array(
-		'userRoles' => array(
-			'guest'	=> array(),
-			'registered' => array(),
-			'admin' => array(
-				'privileges' => array(
-					array('controller' => 'Admin\Controller\Admin', 'action' => 'all'),
-				),
-			),
-		),
-		'userResources' => array(
-			'Admin\Controller\Admin',
-		),
-	),
-	'router' => array(
-		'routes' => array(
-			'admin' => array(
-				'type' => 'Literal',
-				'options' => array(
-					'route' => '/admin',
-					'defaults' => array(
-						'__NAMESPACE__' => 'Admin\Controller',
-						'controller'    => 'Admin',
+return [
+	'userAcl' => [
+		'userRoles' => [
+			'guest'	=> [],
+			'registered' => [],
+			'admin' => [
+				'privileges' => [
+					['controller' => 'UthandoAdmin\Controller\Index', 'action' => 'all'],
+				],
+			],
+		],
+		'userResources' => [
+			'UthandoAdmin\Controller\Index',
+		],
+	],
+	'router' => [
+		'routes' => [
+			'admin' => [
+				'type'          => 'Literal',
+				'options'       => [
+					'route'    => '/admin',
+					'defaults' => [
+						'__NAMESPACE__' => 'UthandoAdmin\Controller',
+						'controller'    => 'Index',
 						'action'        => 'index',
 					    'force-ssl'     => 'ssl'
-					),
-				),
+					],
+				],
 				'may_terminate' => true,
-			),
-		),
-	),
-	'navigation' => array(
-		'admin' => array(
-			'home' => array(
-				'label' => 'Home',
-				'route' => 'home',
-				'resource' => 'menu:admin',
-			),
-		),
-	),
-	'view_manager' => array(
+			],
+		],
+	],
+	'navigation' => [
+        'default' => [
+            'admin' => [
+                'label'     => 'Admin',
+                'route'     => 'admin',
+                'resource'  => 'menu:admin',
+            ],
+        ],
+		'admin' => [
+			'home' => [
+				'label'     => 'Home',
+				'route'     => 'home',
+				'resource'  => 'menu:admin',
+			],
+		],
+	],
+	'view_manager' => [
 	    'template_map' => include __DIR__  .'/../template_map.php',
-    ),
-);
+    ],
+];

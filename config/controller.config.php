@@ -2,6 +2,6 @@
 
 return array(
 	'invokables' => array(
-		'Admin\Controller\Admin' => 'Admin\Controller\AdminController',
+		'UthandoAdmin\Controller\Index' => 'UthandoAdmin\Controller\IndexController',
 	),
 );

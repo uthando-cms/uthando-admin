@@ -15,7 +15,6 @@
     ],
     
     "require" : {
-	    "uthando-cms/uthando" : "dev-master",
 	    "uthando-cms/uthando-navigation" : "dev-master",
 	    "uthando-cms/uthando-user" : "dev-master"
     }

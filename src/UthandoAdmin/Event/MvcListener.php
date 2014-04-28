@@ -37,7 +37,7 @@ class MvcListener implements ListenerAggregateInterface
         
         $configFile = APPLICATION_PATH . '/public/themes/admin/config.php';
         
-        if (!file_exists($configFile)){
+        if (file_exists($configFile)){
             $config = include ($configFile);
         }
         

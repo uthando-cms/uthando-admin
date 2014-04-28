@@ -36,7 +36,10 @@ class MvcListener implements ListenerAggregateInterface
         $sm = $event->getApplication()->getServiceManager();
         
         $configFile = APPLICATION_PATH . '/public/themes/admin/config.php';
-        $config = include ($configFile);
+        
+        if (!file_exists($configFile)){
+            $config = include ($configFile);
+        }
         
         $viewResolver = $sm->get('ViewResolver');
         $themeResolver = new \Zend\View\Resolver\AggregateResolver();
@@ -51,6 +54,8 @@ class MvcListener implements ListenerAggregateInterface
         }
         
         $viewResolver->attach($themeResolver, 1000);
+        
+        return true;
     }
     
     public function onDispatch(MvcEvent $event)

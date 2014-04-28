@@ -6,4 +6,5 @@ return [
     'UthandoAdmin\Controller\IndexController'       => __DIR__ . '/src/UthandoAdmin/Controller/IndexController.php',
     'UthandoAdmin\Event\MvcListener'                => __DIR__ . '/src/UthandoAdmin/Event/MvcListener.php',
     'UthandoAdmin\Service\AdminNavigationFactory'   => __DIR__ . '/src/UthandoAdmin/Service/AdminNavigationFactory.php',
+    'UthandoAdmin\View\Phpinfo'                     => __DIR__ . '/src/UthandoAdmin/View/Phpinfo.php',
 ];

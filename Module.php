@@ -10,7 +10,7 @@ class Module
     public function onBootstrap(MvcEvent $event)
     {
         $eventManager = $event->getApplication()->getEventManager();
-        //$eventManager->attach(new MvcListener());
+        $eventManager->attach(new MvcListener());
     }
     
 	public function getAutoloaderConfig()
@@ -35,6 +35,11 @@ class Module
     public function getControllerConfig()
     {
         return include __DIR__ . '/config/controller.config.php';
+    }
+    
+    public function getViewHelperConfig()
+    {
+        return include __DIR__ . '/config/viewHelper.config.php';
     }
 }
 

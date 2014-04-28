@@ -2,7 +2,7 @@
     "name": "uthando-cms/uthando-admin",
     "description": "Admin module for Uthando CMS",
     "license": "BSD-3-Clause",
-    "keywords": [ "framework", "zf2","cms", "uthando", "admin],
+    "keywords": [ "framework", "zf2","cms", "uthando", "admin"],
     "homepage": "http://shaunfreeman.name/",
     
     "authors": [

@@ -1,7 +1,7 @@
 <?php
-$routeParams = (is_array($this->routeParams)) ? $this->routeParams : array();
+$routeParams = (is_array($this->routeParams)) ? $this->routeParams : [];
 $form = $this->form;
-$routeArray = array('action' => $this->formAction);
+$routeArray = ['action' => $this->formAction];
 if (isset($this->primaryKey)) $routeArray['id'] = $this->primaryKey;
 ?>
 <div>

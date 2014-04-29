@@ -5,7 +5,7 @@ $routeArray = ['action' => $this->formAction];
 if (isset($this->primaryKey)) $routeArray['id'] = $this->primaryKey;
 ?>
 <div>
-	<form class="form form-horizontal" method="post" action="<?=$this->url($this->postRoute, $routeArray) ?>">
+	<form class="form form-horizontal" method="post" action="<?=$this->url($this->postRoute, array_merge($routeParams, $routeArray)) ?>">
 		<fieldset>
 			<legend><?=ucwords($this->formAction); ?> <?=$this->formName;?> Form:</legend>
 			<?php foreach($this->formElements as $element):?>
@@ -18,7 +18,7 @@ if (isset($this->primaryKey)) $routeArray['id'] = $this->primaryKey;
                 <button type="submit" class="btn btn-primary" data-loading-text="Please wait...">
                 	Submit
                 </button>
-                <button type="button" class="btn btn-warning"  data-loading-text="Please wait..." onClick="window.location = '<?=$this->url($this->cancelRoute);?>';">
+                <button type="button" class="btn btn-warning"  data-loading-text="Please wait..." onClick="window.location = '<?=$this->url($this->cancelRoute, array_merge($routeParams, $routeArray));?>';">
                 	Cancel
                 </button>
             </div>

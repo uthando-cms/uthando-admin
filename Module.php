@@ -2,24 +2,15 @@
 
 namespace UthandoAdmin;
 
-use Zend\Mvc\MvcEvent;
-use UthandoAdmin\Event\MvcListener;
-
 class Module
-{
-    public function onBootstrap(MvcEvent $event)
-    {
-        $eventManager = $event->getApplication()->getEventManager();
-        $eventManager->attach(new MvcListener());
-    }
-    
+{   
 	public function getAutoloaderConfig()
     {
-        return array(
+        return [
             'Zend\Loader\ClassMapAutoloader' => [
                 __DIR__ . '/autoload_classmap.php'
             ],
-        );
+        ];
     }
 
     public function getConfig()

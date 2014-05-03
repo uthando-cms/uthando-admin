@@ -3,11 +3,11 @@
 return [
 	'userAcl' => [
 		'userRoles' => [
-			'guest'	=> [],
-			'registered' => [],
 			'admin' => [
 				'privileges' => [
-					['controller' => 'UthandoAdmin\Controller\Index', 'action' => 'all'],
+					'allow' => [
+                        ['controller' => 'UthandoAdmin\Controller\Index', 'action' => 'all'],
+                    ],
 				],
 			],
 		],

@@ -9,7 +9,17 @@ if (isset($this->primaryKey)) $routeArray['id'] = $this->primaryKey;
 		<fieldset>
 			<legend><?=ucwords($this->formAction); ?> <?=$this->formName;?> Form:</legend>
 			<?php foreach($this->formElements as $element):?>
-				<?=$this->ztbFormElement($form->get($element));?>
+			<div class="control-group<?php if ($form->get($element)->getMessages()) echo ' error'; ?>">
+                <label class="control-label" for="<?=$element;?>"><?=$form->get($element)->getLabel();?></label>
+                <div class="controls">
+                    <?=$this->formElement($form->get($element)); ?>
+                    <span class="help-block">
+                    <?=$this->formElementErrors($form->get($element), [
+                        'class' => 'unstyled'
+                    ]); ?>
+                    </span>
+                </div>
+            </div>
 			<?php endforeach;?>
 			<input type="hidden" name="action" value="<?=$this->formAction;?>">
 			

@@ -9,6 +9,7 @@ if (isset($this->primaryKey)) $routeArray['id'] = $this->primaryKey;
 		<fieldset>
 			<legend><?=ucwords($this->formAction); ?> <?=$this->formName;?> Form:</legend>
 			<?php foreach($this->formElements as $element):?>
+			<?php if ($form->get($element)->getAttribute('type') != 'hidden'):?>
 			<div class="control-group<?php if ($form->get($element)->getMessages()) echo ' error'; ?>">
                 <label class="control-label" for="<?=$element;?>"><?=$form->get($element)->getLabel();?></label>
                 <div class="controls">
@@ -20,6 +21,9 @@ if (isset($this->primaryKey)) $routeArray['id'] = $this->primaryKey;
                     </span>
                 </div>
             </div>
+            <?php else: ?>
+            <?=$this->formElement($form->get($element)); ?>
+            <?php endif; ?>
 			<?php endforeach;?>
 			<input type="hidden" name="action" value="<?=$this->formAction;?>">
 			

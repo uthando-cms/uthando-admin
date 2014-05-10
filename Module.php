@@ -20,17 +20,29 @@ class Module
     
     public function getServiceConfig()
     {
-    	return include __DIR__ . '/config/service.config.php';
+    	return [
+        	'factories' => [
+        		'UthandoAdmin\Navigation' => 'UthandoAdmin\Service\AdminNavigationFactory',
+        	],
+        ];
     }
     
     public function getControllerConfig()
     {
-        return include __DIR__ . '/config/controller.config.php';
+        return [
+        	'invokables' => [
+        		'UthandoAdmin\Controller\Index' => 'UthandoAdmin\Controller\IndexController',
+        	],
+        ];
     }
     
     public function getViewHelperConfig()
     {
-        return include __DIR__ . '/config/viewHelper.config.php';
+        return [
+            'invokables' => [
+        	    'Phpinfo' => 'UthandoAdmin\View\Phpinfo',
+            ],
+        ];
     }
 }
 

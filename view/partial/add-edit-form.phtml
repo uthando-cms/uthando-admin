@@ -4,20 +4,20 @@ $form = $this->form;
 $routeArray = ['action' => $this->formAction];
 if (isset($this->primaryKey)) $routeArray['id'] = $this->primaryKey;
 ?>
-<div>
-	<form class="form form-horizontal" method="post" action="<?=$this->url($this->postRoute, array_merge($routeParams, $routeArray)) ?>">
+<div class="row">
+	<form class="col-sm-12 form-horizontal" method="post" action="<?=$this->url($this->postRoute, array_merge($routeParams, $routeArray)) ?>">
 		<fieldset>
 			<legend><?=ucwords($this->formAction); ?> <?=$this->formName;?> Form:</legend>
 			<?php foreach($this->formElements as $element):?>
 			<?php if ($form->get($element)->getAttribute('type') != 'hidden'):?>
-			<div class="control-group<?php if ($form->get($element)->getMessages()) echo ' error'; ?>">
-                <label class="control-label" for="<?=$element;?>"><?=$form->get($element)->getLabel();?></label>
-                <div class="controls">
-                    <?=$this->formElement($form->get($element)); ?>
+			<div class="form-group">
+                <label for="<?=$element;?>" class="col-sm-2 control-label"><?=$form->get($element)->getLabel();?></label>
+                <div class="col-sm-4">
+                    <?=$this->formElement($form->get($element)->setAttribute('class', 'form-control')); ?>
                     <span class="help-block">
-                    <?=$this->formElementErrors($form->get($element), [
-                        'class' => 'unstyled'
-                    ]); ?>
+                    <?=$this->formElementErrors($form->get($element), array(
+                        'class' => 'list-unstyled'
+                    )); ?>
                     </span>
                 </div>
             </div>
@@ -25,18 +25,20 @@ if (isset($this->primaryKey)) $routeArray['id'] = $this->primaryKey;
             <?=$this->formElement($form->get($element)); ?>
             <?php endif; ?>
 			<?php endforeach;?>
+			 
 			<input type="hidden" name="action" value="<?=$this->formAction;?>">
 			
-			<div class="control-group">
-            <div class="controls">
-                <button type="submit" class="btn btn-primary" data-loading-text="Please wait...">
-                	Submit
-                </button>
-                <button type="button" class="btn btn-warning"  data-loading-text="Please wait..." onClick="window.location = '<?=$this->url($this->cancelRoute, array_merge($routeParams, $routeArray));?>';">
-                	Cancel
-                </button>
+			<div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary" data-loading-text="Please wait...">
+                    	Submit
+                    </button>
+                    <button type="button" class="btn btn-warning"  data-loading-text="Please wait..." onClick="window.location = '<?=$this->url($this->cancelRoute, array_merge($routeParams, $routeArray));?>';">
+                    	Cancel
+                    </button>
+                </div>
             </div>
-        </div>
 		</fieldset>
 	</form>
 </div>
+

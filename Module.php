@@ -40,7 +40,8 @@ class Module
     {
         return [
             'invokables' => [
-        	    'Phpinfo' => 'UthandoAdmin\View\Phpinfo',
+        	    'Phpinfo'              => 'UthandoAdmin\View\Phpinfo',
+        	    'UthandoFormElement'   => 'UthandoAdmin\View\UthandoFormElement',
             ],
         ];
     }

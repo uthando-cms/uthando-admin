@@ -8,24 +8,7 @@ if (isset($this->primaryKey)) $routeArray['id'] = $this->primaryKey;
 	<form class="col-sm-12 form-horizontal" method="post" action="<?=$this->url($this->postRoute, array_merge($routeParams, $routeArray)) ?>">
 		<fieldset>
 			<legend><?=ucwords($this->formAction); ?> <?=$this->formName;?> Form:</legend>
-			<?php foreach($this->formElements as $element):?>
-			<?php if ($form->get($element)->getAttribute('type') != 'hidden'):?>
-			<div class="form-group">
-                <label for="<?=$element;?>" class="col-sm-2 control-label"><?=$form->get($element)->getLabel();?></label>
-                <div class="col-sm-4">
-                    <?=$this->formElement($form->get($element)->setAttribute('class', 'form-control')); ?>
-                    <span class="help-block">
-                    <?=$this->formElementErrors($form->get($element), array(
-                        'class' => 'list-unstyled'
-                    )); ?>
-                    </span>
-                </div>
-            </div>
-            <?php else: ?>
-            <?=$this->formElement($form->get($element)); ?>
-            <?php endif; ?>
-			<?php endforeach;?>
-			 
+			<?=$this->uthandoFormElement();?>
 			<input type="hidden" name="action" value="<?=$this->formAction;?>">
 			
 			<div class="form-group">

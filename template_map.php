@@ -5,4 +5,5 @@ return [
     'uthando-admin/partial/add-edit-form'   => __DIR__ . '/view/partial/add-edit-form.phtml',
     'uthando-admin/partial/edit-actions'    => __DIR__ . '/view/partial/edit-actions.phtml',
     'uthando-admin/partial/search'          => __DIR__ . '/view/partial/search.phtml',
+    'uthando-admin/partial/tb-form-element' => __DIR__ . '/view/partial/tb-form-element.phtml',
 ];

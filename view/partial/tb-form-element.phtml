@@ -1,0 +1,12 @@
+
+<div class="form-group">
+    <label for="<?=$this->element->getName();?>" class="col-sm-2 control-label"><?=$this->element->getLabel();?></label>
+    <div class="col-sm-4">
+        <?=$this->formElement($this->element->setAttribute('class', 'form-control')); ?>
+        <span class="help-block">
+            <?=$this->formElementErrors($this->element, [
+                'class' => 'list-unstyled'
+            ]); ?>
+        </span>
+    </div>
+</div>

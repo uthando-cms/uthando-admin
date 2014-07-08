@@ -7,7 +7,7 @@ class UthandoFormElement extends AbstractHelper
 {
     protected $parial = 'uthando-admin/partial/tb-form-element';
     
-    protected $checkboxRadio = '<div class="%s col-sm-offset-2"><label>%s %s</label></div><br>';
+    protected $checkboxRadio = '<div class="%s col-md-offset-2"><label>%s %s</label></div><br>';
     
     public function __invoke()
     {

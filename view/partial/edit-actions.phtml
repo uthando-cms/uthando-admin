@@ -1,11 +1,16 @@
 
 <?php $routeParams = (is_array($this->routeParams)) ? $this->routeParams : []; ?>
+<?php $edit = (is_bool($this->edit)) ? $this->edit : true; ?>
+<?php $delete = (is_bool($this->delete)) ? $this->delete : true; ?>
 
-<a href="<?=$this->url($this->route, array_merge($routeParams, [
-	'id' => $this->id
-])); ?>" class="btn btn-primary">Edit</a>
-&nbsp;
+<?php if ($edit):?>
+    <a href="<?=$this->url($this->route, array_merge($routeParams, [
+    	'id' => $this->id
+    ])); ?>" class="btn btn-primary">Edit</a>
+    &nbsp;
+<?php endif; ?>
 
+<?php if ($delete):?>
 <!-- Button to trigger modal -->
 <a href="#<?=$this->tableName;?>Model<?=$this->id;?>" class="btn btn-danger" data-toggle="modal" data-target="#<?=$this->tableName;?>Model<?=$this->id;?>">Delete</a>
 <!-- Modal -->
@@ -35,5 +40,5 @@
             
         </div>
     </div>
-    
 </div>
+<?php endif; ?>

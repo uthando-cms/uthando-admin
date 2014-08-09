@@ -46,6 +46,12 @@ return [
 				'route'     => 'home',
 				'resource'  => 'menu:admin',
 			],
+			'modules' => [
+                'label'     => 'Modules',
+                'route'     => 'admin',
+                'resource'  => 'menu:admin',
+                'pages'     => [],
+			],
 		],
 	],
 	'view_manager' => [

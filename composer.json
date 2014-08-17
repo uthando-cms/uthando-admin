@@ -15,9 +15,9 @@
     ],
     "require" : {
 	    "php" : ">=5.4",
-	    "uthando-cms/uthando-common" : "dev-master",
-	    "uthando-cms/uthando-navigation" : "dev-master",
-	    "uthando-cms/uthando-user" : "dev-master"
+	    "uthando-cms/uthando-common" : "1.*",
+	    "uthando-cms/uthando-navigation" : "1.*",
+	    "uthando-cms/uthando-user" : "1.*"
     },
     "require-dev" : {
     	"zendframework/zendframework" : "2.*"

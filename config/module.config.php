@@ -1,19 +1,23 @@
 <?php
 
 return [
-	'userAcl' => [
-		'userRoles' => [
-			'admin' => [
-				'privileges' => [
-					'allow' => [
-                        ['controller' => 'UthandoAdmin\Controller\Index', 'action' => 'all'],
+    'uthando_user' => [
+        'acl' => [
+            'roles' => [
+                'admin' => [
+                    'privileges' => [
+                        'allow' => [
+                            'controllers' => [
+                                'UthandoAdmin\Controller\Index' => ['action' => 'all'],
+                            ],
+                        ],
                     ],
-				],
-			],
-		],
-		'userResources' => [
-			'UthandoAdmin\Controller\Index',
-		],
+                ],
+            ],
+            'resources' => [
+                'UthandoAdmin\Controller\Index',
+            ],
+        ],
 	],
 	'router' => [
 		'routes' => [

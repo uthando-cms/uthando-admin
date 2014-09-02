@@ -29,7 +29,8 @@ return [
 						'__NAMESPACE__' => 'UthandoAdmin\Controller',
 						'controller'    => 'Index',
 						'action'        => 'index',
-					    'force-ssl'     => 'ssl'
+					    'force-ssl'     => 'ssl',
+                        'is-admin'      => true,
 					],
 				],
 				'may_terminate' => true,

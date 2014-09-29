@@ -5,12 +5,19 @@ use Zend\Form\View\Helper\AbstractHelper;
 
 class UthandoFormElement extends AbstractHelper
 {
-    protected $parial = 'uthando-admin/partial/tb-form-element';
+    protected $partial = 'uthando-admin/partial/tb-form-element';
     
     protected $checkboxRadio = '<div class="%s col-md-offset-2"><label>%s %s</label></div><br>';
+
+    protected $options = [
+        'labelWidth'    => '2',
+        'elementWidth'  => '4',
+    ];
     
-    public function __invoke()
+    public function __invoke($options = [])
     {
+        $options = array_merge($this->options, $options);
+
         $formElementHelper = $this->view->plugin('formElement');
         
         /** @var \Zend\View\Helper\Partial $partialHelper */
@@ -33,8 +40,9 @@ class UthandoFormElement extends AbstractHelper
                     );
             	    break;
             	default:
-            	    $html .= $partialHelper($this->parial, [
+            	    $html .= $partialHelper($this->partial, [
                         'element'   => $this->view->form->get($element),
+                        'options'   => $options,
             	    ]);
             }
         }

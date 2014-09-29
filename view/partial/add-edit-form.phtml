@@ -1,23 +1,27 @@
 
-<div class="row">
-	<form class="col-md-12 form-horizontal" method="post" action="<?=$this->postUrl;?>">
-		<fieldset>
-			<legend><?=$this->formName;?></legend>
-			
-			<?=$this->uthandoFormElement();?>
-			
-			<div class="form-group">
+<?php $formWidth = ($this->formWidth) ?: '12'; ?>
+<?php $options = ($this->helperOptions) ?: []; ?>
+
+<form class="col-md-<?=$this->formWidth;?> form-horizontal" method="post" action="<?=$this->postUrl;?>">
+    <fieldset>
+        <div class="row">
+            <legend><?=$this->formName;?></legend>
+            <?=$this->uthandoFormElement($options);?>
+        </div>
+        <div class="row">
+            <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <button type="submit" class="btn btn-primary" data-loading-text="Please wait...">
-                    	Submit
+                        Submit
                     </button>
                     <?php if ($this->cancelUrl):?>
                     <a href="<?=$this->cancelUrl;?>" class="btn btn-warning"  data-loading-text="Please wait...">
-                    	Cancel
+                        Cancel
                     </a>
                     <?php endif;?>
                 </div>
             </div>
-		</fieldset>
-	</form>
-</div>
+        </div>
+    </fieldset>
+</form>
+

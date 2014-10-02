@@ -2,17 +2,18 @@
 <?php $routeParams = (is_array($this->routeParams)) ? $this->routeParams : []; ?>
 <?php $edit = (is_bool($this->edit)) ? $this->edit : true; ?>
 <?php $delete = (is_bool($this->delete)) ? $this->delete : true; ?>
+<?php $buttonSize = ($this->buttonSize) ? ' ' . $this->buttonSize : ''; ?>
 
 <?php if ($edit):?>
     <a href="<?=$this->url($this->route, array_merge($routeParams, [
     	'id' => $this->id
-    ])); ?>" class="btn btn-primary">Edit</a>
+    ])); ?>" class="btn btn-primary<?=$buttonSize;?>">Edit</a>
     &nbsp;
 <?php endif; ?>
 
 <?php if ($delete):?>
 <!-- Button to trigger modal -->
-<a href="#<?=$this->tableName;?>Model<?=$this->id;?>" class="btn btn-danger" data-toggle="modal" data-target="#<?=$this->tableName;?>Model<?=$this->id;?>">Delete</a>
+<a href="#<?=$this->tableName;?>Model<?=$this->id;?>" class="btn btn-danger<?=$buttonSize;?>" data-toggle="modal" data-target="#<?=$this->tableName;?>Model<?=$this->id;?>">Delete</a>
 <!-- Modal -->
 <div class="modal fade" id="<?=$this->tableName;?>Model<?=$this->id;?>">
 
@@ -33,8 +34,11 @@
             </div>
             <input type="hidden" name="<?=$this->pk;?>" value="<?=$this->id;?>">
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">No Don't Do It</button>
-                <button type="submit" name="submit" class="btn btn-danger" value="delete">Yes Delete It</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">No
+                Don't
+                 Do It</button>
+                <button type="submit" name="submit" class="btn btn-danger" value="delete">Yes Delete
+                It</button>
             </div>
             </form>
             

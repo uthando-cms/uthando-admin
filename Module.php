@@ -2,6 +2,11 @@
 
 namespace UthandoAdmin;
 
+/**
+ * Class Module
+ *
+ * @package UthandoAdmin
+ */
 class Module
 {
     public function getConfig()

@@ -1,17 +1,28 @@
+<?php use Zend\Form\Element; ?>
+
+<?php $params = ($this->params) ?: []; ?>
+
+<?php
+$select = new Element\Select('count');
+$select->setValueOptions(array(
+	'25'  => '25',
+	'50'  => '50',
+	'75'  => '75',
+	'100' => '100'
+));
+$select->setValue((isset($params['count'])) ? $params['count'] : 25 );
+$select->setAttribute('class', 'form-control');
+?>
 
 <form id="search-<?=$this->name;?>" class="form-inline" method="post">
 	<?php foreach($this->searchInputs as $label => $input):?>
+	<?php $value = (isset($params[$input])) ? $params[$input] : null; ?>
 	<div class="form-group">
-	   <input type="text" class="form-control" name="<?=$input;?>" placeholder="<?=ucwords($label)?>:">
+	   <input type="text" class="form-control" name="<?=$input;?>" placeholder="<?=ucwords($label)?>:" value="<?=$value;?>">
     </div>
 	<?php endforeach;?>
 	<div class="form-group">
-    	<select name="count" class="form-control">
-    		<option selected="selected">25</option>
-    		<option>50</option>
-    		<option>75</option>
-    		<option>100</option>
-    	</select>
+    	<?=$this->formSelect($select);?>
 	</div>
 	<button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i> Search</button>
 	<button type="reset" class="btn btn-default">Reset</button>

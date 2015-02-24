@@ -16,15 +16,16 @@ $select->setAttribute('class', 'form-control');
 
 <form id="search-<?=$this->name;?>" class="form-inline" method="post">
 	<?php foreach($this->searchInputs as $label => $input):?>
-	<?php $value = (isset($params[$input])) ? $params[$input] : null; ?>
 	<div class="form-group">
 	   <?php if ($input instanceof Element): ?>
+	       <?php $value = (isset($params[$input->getName()])) ? $params[$input->getName()] : null; ?>
 	       <?=$this->formElement($input->setAttributes([
 	           'class' => 'form-control',
-	           //'value' => $value
+	           'value' => $value
 	       ]))?>
 	   <?php else: ?>
-	       <input type="text" class="form-control" name="<?=$input;?>" placeholder="<?=ucwords($label)?>:" value="">
+	       <?php $value = (isset($params[$input])) ? $params[$input] : null; ?>
+	       <input type="text" class="form-control" name="<?=$input;?>" placeholder="<?=ucwords($label)?>:" value="<?=$value;?>">
        <?php endif; ?>
     </div>
     

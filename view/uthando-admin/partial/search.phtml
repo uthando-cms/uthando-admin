@@ -18,8 +18,16 @@ $select->setAttribute('class', 'form-control');
 	<?php foreach($this->searchInputs as $label => $input):?>
 	<?php $value = (isset($params[$input])) ? $params[$input] : null; ?>
 	<div class="form-group">
-	   <input type="text" class="form-control" name="<?=$input;?>" placeholder="<?=ucwords($label)?>:" value="<?=$value;?>">
+	   <?php if ($input instanceof Element): ?>
+	       <?=$this->formElement($input->setAttributes([
+	           'class' => 'form-control',
+	           //'value' => $value
+	       ]))?>
+	   <?php else: ?>
+	       <input type="text" class="form-control" name="<?=$input;?>" placeholder="<?=ucwords($label)?>:" value="">
+       <?php endif; ?>
     </div>
+    
 	<?php endforeach;?>
 	<div class="form-group">
     	<?=$this->formSelect($select);?>

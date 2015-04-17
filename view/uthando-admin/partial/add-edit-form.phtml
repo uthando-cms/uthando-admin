@@ -1,6 +1,9 @@
 
 <?php $formWidth = ($this->formWidth) ?: '12'; ?>
-<?php $options = ($this->helperOptions) ?: []; ?>
+<?php $options = ($this->helperOptions) ?: [
+    'labelWidth'    => '2',
+    'elementWidth'  => '4',
+]; ?>
 
 <form class="col-md-<?=$formWidth;?> form-horizontal" method="post" action="<?=$this->postUrl;?>">
     <fieldset>
@@ -9,7 +12,13 @@
             <?php if($this->formName): ?>
             <legend><?=$this->formName;?></legend>
             <?php endif; ?>
-            <?=$this->uthandoFormElement($options);?>
+            <?php foreach ($this->formElements as $element):?>
+            <?php $this->form->get($element)
+                    ->setLabelAttributes(['class' => 'col-md-' . $options['labelWidth'] . ' control-label'])
+                    ->setOption('column-size', 'md-' . $options['elementWidth'])
+                    ->setOption('twb-layout', 'horizontal');?>
+                <?=$this->formRow($this->form->get($element));?>
+            <?php endforeach;?>
         </div>
 
         <?php if ($this->postUrl):?>

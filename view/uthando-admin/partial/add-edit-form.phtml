@@ -4,8 +4,11 @@
     'labelWidth'    => '2',
     'elementWidth'  => '4',
 ]; ?>
-
-<form class="col-md-<?=$formWidth;?> form-horizontal" method="post" action="<?=$this->postUrl;?>">
+<?php $this->form->prepare();?>
+<?=$this->form()->openTag($this->form->setAttributes([
+    'class' => 'col-md-' . $formWidth,
+    'action' => $this->postUrl,
+]));?>
     <fieldset>
 
         <div class="row">
@@ -40,5 +43,5 @@
         </div>
         <?php endif;?>
     </fieldset>
-</form>
+<?=$this->form()->closeTag();?>
 

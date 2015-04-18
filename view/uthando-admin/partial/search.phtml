@@ -14,6 +14,22 @@ $select->setValue((isset($params['count'])) ? $params['count'] : 25 );
 $select->setAttribute('class', 'form-control');
 ?>
 
+
+    <div class="dropdown pull-right">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+            Actions
+            <span class="caret"></span>
+        </button>
+        
+        <?=$this->uthandoNavigation('UthandoAdmin\Navigation')
+                ->uthandoTbMenu()
+                ->setUlClass('dropdown-menu')
+                ->setOnlyActiveBranch(true)
+                ->setRenderParents(false);
+        ?>
+    </div>
+
+
 <form id="search-<?=$this->name;?>" class="form-inline" method="post">
 	<?php foreach($this->searchInputs as $label => $input):?>
 	<div class="form-group">
@@ -35,5 +51,8 @@ $select->setAttribute('class', 'form-control');
 	</div>
 	<button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i> Search</button>
 	<button type="reset" class="btn btn-default">Reset</button>
+	
+    
 </form>
+
 <div class="clearfix">&nbsp;</div>

@@ -7,12 +7,14 @@
 <?php if ($edit):?>
     <a href="<?=$this->url($this->route, array_merge($routeParams, [
     	'id' => $this->id
-    ])); ?>" class="edit-button btn btn-primary<?=$buttonSize;?>">Edit</a>
+    ])); ?>" class="edit-button"><i class="fa fa-edit fa-2x"></i></a>
 <?php endif; ?>
-
+&nbsp;
 <?php if ($delete):?>
 <!-- Button to trigger modal -->
-<a href="#<?=$this->tableName;?>Model<?=$this->id;?>" class="btn btn-danger<?=$buttonSize;?>" data-toggle="modal" data-target="#<?=$this->tableName;?>Model<?=$this->id;?>">Delete</a>
+<a href="#<?=$this->tableName;?>Model<?=$this->id;?>" class="text-danger" data-toggle="modal" data-target="#<?=$this->tableName;?>Model<?=$this->id;?>">
+    <i class="fa fa-trash fa-2x"></i>
+</a>
 <!-- Modal -->
 <div class="modal fade" id="<?=$this->tableName;?>Model<?=$this->id;?>">
 

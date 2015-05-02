@@ -67,6 +67,6 @@ $select->setAttribute('class', 'form-control');
 
 <?php $this->inlineScript()->captureStart(); ?>
 $('select[name=count]').on('change', function(){
-    $('#table-product').dataGrid('doSearch');
+    $('#table-<?=$this->name;?>').dataGrid('doSearch');
 });
 <?php $this->inlineScript()->captureEnd(); ?>

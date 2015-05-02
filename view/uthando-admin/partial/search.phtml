@@ -64,3 +64,9 @@ $select->setAttribute('class', 'form-control');
     </form>
 
 <div class="clearfix">&nbsp;</div>
+
+<?php $this->inlineScript()->captureStart(); ?>
+$('select[name=count]').on('change', function(){
+    $('#table-product').dataGrid('doSearch');
+});
+<?php $this->inlineScript()->captureEnd(); ?>

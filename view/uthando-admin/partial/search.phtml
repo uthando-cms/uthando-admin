@@ -36,7 +36,7 @@ $select->setAttribute('class', 'form-control');
 	   <?php if ($input instanceof Element): ?>
 	       <?php $value = (isset($params[$input->getName()])) ? $params[$input->getName()] : null; ?>
 	       <?=$this->formElement($input->setAttributes([
-	           'class' => 'form-control',
+	           //'class' => 'form-control',
 	           'value' => $value
 	       ]))?>
 	   <?php else: ?>
@@ -51,8 +51,16 @@ $select->setAttribute('class', 'form-control');
 	</div>
 	<button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i> Search</button>
 	<button type="reset" class="btn btn-default">Reset</button>
-	
-    
-</form>
+	<?php if ($this->secondRowInputs):?>
+	<br>
+	<?php foreach($this->secondRowInputs as $element):?>
+        <?php $value = (isset($params[$element->getName()])) ? $params[$element->getName()] : null; ?>
+        <?=$this->formElement($element->setAttributes([
+           //'class' => 'form-control',
+           'value' => $value
+        ]))?>
+	<?php endforeach;?>
+	<?php endif;?>
+    </form>
 
 <div class="clearfix">&nbsp;</div>

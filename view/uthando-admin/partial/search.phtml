@@ -1,8 +1,8 @@
-<?php use Zend\Form\Element; ?>
+<?php 
+use Zend\Form\Element;
 
-<?php $params = ($this->params) ?: []; ?>
+$params = ($this->params) ?: []; 
 
-<?php
 $select = new Element\Select('count');
 $select->setValueOptions(array(
 	'25'  => '25',
@@ -12,23 +12,25 @@ $select->setValueOptions(array(
 ));
 $select->setValue((isset($params['count'])) ? $params['count'] : 25 );
 $select->setAttribute('class', 'form-control');
+
+$menu = $this->uthandoNavigation('UthandoAdmin\Navigation')
+    ->uthandoTbMenu()
+    ->setUlClass('dropdown-menu')
+    ->setOnlyActiveBranch(true)
+    ->setRenderParents(false);
+
+if ($this->menuPartial) {
+    $menu->setPartial($this->menuPartial);
+}
+
 ?>
-
-
-    <div class="dropdown pull-right">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-            Actions
-            <span class="caret"></span>
-        </button>
-        
-        <?=$this->uthandoNavigation('UthandoAdmin\Navigation')
-                ->uthandoTbMenu()
-                ->setUlClass('dropdown-menu')
-                ->setOnlyActiveBranch(true)
-                ->setRenderParents(false);
-        ?>
-    </div>
-
+<div class="dropdown pull-right">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+        Actions
+        <span class="caret"></span>
+    </button>
+    <?=$menu;?>
+</div>
 
 <form id="search-<?=$this->name;?>" class="form-inline" method="post">
 	<?php foreach($this->searchInputs as $label => $input):?>

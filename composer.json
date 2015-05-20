@@ -17,7 +17,8 @@
 	    "zendframework/zend-version" : "2.*",
 	    "uthando-cms/uthando-common" : "1.*",
 	    "uthando-cms/uthando-navigation" : "1.*",
-	    "uthando-cms/uthando-user" : "1.*"
+	    "uthando-cms/uthando-user" : "1.*",
+        "rwoverdijk/assetmanager": "1.*"
     },
     "require-dev" : {
     	"zendframework/zendframework" : "2.*"

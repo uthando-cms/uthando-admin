@@ -1,6 +1,35 @@
 <?php
 
 return [
+    'asset_manager' => [
+        'resolver_configs' => [
+            'collections' => [
+                'js/uthando-admin.js' => [
+                    'js/loading-overlay.min.js',
+                    'js/jquery.datatable.js',
+                    'js/admin.js',
+                    'js/jquery.ajaxWidgetPanel.js',
+                    'js/bootbox.min.js',
+                ],
+            ],
+            'paths' => [
+                'UthandoAdmin' => __DIR__ . '/../public',
+            ],
+        ],
+        'caching' => [
+            'default' => [
+                'cache'     => 'FilesystemCache',
+                'options' => [
+                    'dir' => 'data/cache', // path/to/cache
+                ],
+            ],
+        ],
+        /*'filters' => [
+            'js' => [
+                ['filter' => 'Assetic\Filter\JSMinFilter'],
+            ],
+        ],*/
+    ],
     'uthando_user' => [
         'acl' => [
             'roles' => [

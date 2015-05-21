@@ -48,6 +48,25 @@ return [
             ],
         ],
 	],
+    'controllers' => [
+        'invokables' => [
+            'UthandoAdmin\Controller\Index' => 'UthandoAdmin\Controller\IndexController',
+        ],
+    ],
+    'service_manager' => [
+        'factories' => [
+            'UthandoAdmin\Navigation' => 'UthandoAdmin\Service\AdminNavigationFactory',
+        ],
+    ],
+    'view_helpers' => [
+        'invokables' => [
+            'Phpinfo'              => 'UthandoAdmin\View\Phpinfo',
+            'UthandoFormElement'   => 'UthandoAdmin\View\UthandoFormElement',
+        ],
+    ],
+    'view_manager' => [
+        'template_map' => include __DIR__  .'/../template_map.php',
+    ],
 	'router' => [
 		'routes' => [
 			'admin' => [
@@ -88,7 +107,4 @@ return [
 			],
 		],
 	],
-	'view_manager' => [
-	    'template_map' => include __DIR__  .'/../template_map.php',
-    ],
 ];

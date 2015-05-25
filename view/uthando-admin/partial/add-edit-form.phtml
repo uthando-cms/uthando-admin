@@ -1,9 +1,6 @@
 
 <?php $formWidth = ($this->formWidth) ?: '12'; ?>
-<?php $options = ($this->helperOptions) ?: [
-    'labelWidth'    => '2',
-    'elementWidth'  => '4',
-]; ?>
+
 <?php $this->form->prepare();?>
 <?=$this->form()->openTag($this->form->setAttributes([
     'class' => 'col-md-' . $formWidth,
@@ -16,10 +13,6 @@
             <legend><?=$this->formName;?></legend>
             <?php endif; ?>
             <?php foreach ($this->formElements as $element):?>
-            <?php $this->form->get($element)
-                    ->setLabelAttributes(['class' => 'col-md-' . $options['labelWidth'] . ' control-label'])
-                    ->setOption('column-size', 'md-' . $options['elementWidth'])
-                    ->setOption('twb-layout', 'horizontal');?>
                 <?=$this->formRow($this->form->get($element));?>
             <?php endforeach;?>
         </div>
@@ -44,4 +37,6 @@
         <?php endif;?>
     </fieldset>
 <?=$this->form()->closeTag();?>
+
+<div class="clearfix">&nbsp;</div>
 

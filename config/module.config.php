@@ -11,6 +11,9 @@ return [
                     'js/jquery.ajaxWidgetPanel.js',
                     'js/bootbox.min.js',
                 ],
+                'css/uthando-admin.css' => [
+                    'css/admin.css'
+                ],
             ],
             'paths' => [
                 'UthandoAdmin' => __DIR__ . '/../public',

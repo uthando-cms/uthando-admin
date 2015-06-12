@@ -168,7 +168,3 @@ input[readonly] {
     background-color: white !important;
     cursor: text !important;
 }
-
-#paypal-field-set {
-	clear: both;
-}

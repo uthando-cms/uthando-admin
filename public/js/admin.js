@@ -95,11 +95,16 @@ var admin = {
 
 $(document).ready(function(){
 
-    $("li.dropdown-submenu > a").on("click", function(){
-        $("li.dropdown-submenu").removeClass("active");
-        $(this).parent().addClass("active");
-        return false;
-    });
+    // hack as android doesn't show level > 2 sub-menus
+    // so just treat it as a level 1 sub-menu
+    var ua = navigator.userAgent.toLowerCase();
+    var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+    if(isAndroid) {
+        $("li.dropdown-submenu > a").on("click", function () {
+            alert(this.href);
+            window.location = this.href;
+        });
+    }
 
     $('button[type=submit]').click(function(){
         $(this).button('loading');

@@ -29,13 +29,13 @@
 
         if($hasChildren) {
             $html .= '<li class="'.$active.'">';
-            $html .= '<a href="#collapse'.$count.'" data-toggle="collapse">';
-            $html .= '<span>'.$page->getLabel().'</span> <b class="caret"></b>';
+            $html .= '<a href="#collapse'.$count.'" data-toggle="collapse" style="padding-left: '.($depth+1).'em;">';
+            $html .= '<span>'.$page->getLabel().'</span> <i class="fa arrow"></i>';
             $html .= '</a>';
-            $html .= '<ul id="collapse'.$count.'" class="nav nav-sidebar nav-stacked collapse">';
+            $html .= '<ul id="collapse'.$count.'" class="nav nav-sidebar collapse">';
         } else {
             $html .= '<li class="'.$active.'">';
-            $html .= '<a href="'.$page->getHref().'">';
+            $html .= '<a href="'.$page->getHref().'" style="padding-left: '.($depth+1).'em;">';
             $html .= '<span>'.$page->getLabel().'</span>';
             $html .= '</a>';
         }
@@ -49,6 +49,6 @@
 
 ?>
 
-<ul id="admin-sidebar" class="nav nav-sidebar nav-stacked">
+<ul id="admin-sidebar" class="metismenu nav nav-sidebar">
     <?=$html;?>
 </ul>

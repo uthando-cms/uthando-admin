@@ -16,6 +16,7 @@
 
         <!-- Scripts -->
         <?=$this->headScript()
+            ->appendFile('//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.0.2/metisMenu.min.js')
             ->appendFile($this->basePath('js/uthando-admin.js'));?>
        
     </head>
@@ -30,17 +31,16 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="<?=$this->url('home'); ?>">
-                        <img src="<?=$this->basePath('/img/zf2-logo.png');?>">
-                        <span>Uthando CMS</span>
+                        Uthando CMS
                     </a>
                 </div>
-                
-    			<div class="admin-collapse collapse navbar-collapse">
+
+    			<div class="admin-collapse navbar-collapse collapse ">
                     <?php if ($this->identity()):?>
     				<div class="dropdown">
     					<ul class="nav navbar-nav navbar-right">
     						<li><a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i
-    								class="glyphicon glyphicon-user"></i> <?=$this->identity()->getFullName();?> 
+    								class="glyphicon glyphicon-user"></i> <?=$this->identity()->getFullName();?>
         					        <b class="caret"></b>
     						</a>
                             <?=$this->uthandoNavigation('UthandoUser\Navigation')
@@ -56,7 +56,7 @@
 
         <div id="wrapper" class="container-fluid">
             <div class="row">
-                <div class="admin-collapse collapse navbar-collapse">
+                <div class="admin-collapse navbar-collapse collapse">
                     <div id="sidebar-wrapper" class="col-sm-3 col-md-2 sidebar">
                         <?=$this->uthandoNavigation('UthandoAdmin\Navigation')
                             ->uthandoTbMenu()

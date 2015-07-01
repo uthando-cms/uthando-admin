@@ -7,5 +7,6 @@ return array(
     'uthando-admin/partial/edit-actions'    => __DIR__ . '/view/uthando-admin/partial/edit-actions.phtml',
     'uthando-admin/partial/form-element'    => __DIR__ . '/view/uthando-admin/partial/form-element.phtml',
     'uthando-admin/partial/search'          => __DIR__ . '/view/uthando-admin/partial/search.phtml',
+    'uthando-admin/partial/side-bar'        => __DIR__ . '/view/uthando-admin/partial/side-bar.phtml',
     'uthando-admin/partial/tb-form-element' => __DIR__ . '/view/uthando-admin/partial/tb-form-element.phtml',
 );

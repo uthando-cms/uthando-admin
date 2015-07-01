@@ -1,0 +1,54 @@
+
+<?php
+    $iterator   = new RecursiveIteratorIterator($this->container, RecursiveIteratorIterator::SELF_FIRST);
+    $prevDepth  = -1;
+    $count      = -1;
+    $maxDepth   = iterator_count($iterator) - 1;
+    $html       = '';
+
+    /* @var $page Zend\Navigation\Page\Mvc */
+    foreach ($iterator as $page) {
+        $depth          = $iterator->getDepth();
+        $hasChildren    = $page->hasPages();
+        $count++;
+
+        // when using partials we need to manually check for ACL conditions
+        if( ! $page->isVisible() || !$this->uthandoNavigation()->accept($page)) continue;
+
+        if ($prevDepth > $depth) {
+            for ($i = $prevDepth; $i > $depth; $i--) {
+                $html .= '</li></ul>';
+            }
+
+            $html .= '</li>';
+        } else {
+            $html .= '</li>';
+        }
+
+        $active = $page->isActive(true) ? 'active' : '';
+
+        if($hasChildren) {
+            $html .= '<li class="'.$active.'">';
+            $html .= '<a href="#collapse'.$count.'" data-toggle="collapse">';
+            $html .= '<span>'.$page->getLabel().'</span> <b class="caret"></b>';
+            $html .= '</a>';
+            $html .= '<ul id="collapse'.$count.'" class="nav nav-sidebar nav-stacked collapse">';
+        } else {
+            $html .= '<li class="'.$active.'">';
+            $html .= '<a href="'.$page->getHref().'">';
+            $html .= '<span>'.$page->getLabel().'</span>';
+            $html .= '</a>';
+        }
+
+        $prevDepth = $depth;
+    }
+
+    for ($i = $prevDepth+1; $i > 0; $i--) {
+        $html .= '</li></ul>';
+    }
+
+?>
+
+<ul id="admin-sidebar" class="nav nav-sidebar nav-stacked">
+    <?=$html;?>
+</ul>

@@ -4,19 +4,6 @@ body {
 	padding-top: 60px;
 }
 
-.navbar-brand > img {
-  display: inline;
-}
-
-div.container a.navbar-brand img,
-div.container a.navbar-brand span  {
-	vertical-align: middle;
-}
-
-div.container a.navbar-brand img {
-	margin-right: 10px;
-}
-
 /* Loading ajax styles */
 .loading {
     position: relative;
@@ -72,56 +59,71 @@ div.container a.navbar-brand img {
                 no-repeat;
 }
 
-/* Menu hack for bootstrap 3 */
-.dropdown-submenu {
-    position: relative;
+/* nav & side bar */
+.navbar-brand > img {
+    display: inline;
 }
 
-.dropdown-submenu>.dropdown-menu {
-    top: 0;
-    left: 100%;
-    margin-top: -6px;
-    margin-left: -1px;
-    -webkit-border-radius: 0 6px 6px 6px;
-    -moz-border-radius: 0 6px 6px;
-    border-radius: 0 6px 6px 6px;
+div.container a.navbar-brand img,
+div.container a.navbar-brand span  {
+    vertical-align: middle;
 }
 
-.dropdown-submenu:hover>.dropdown-menu {
-    display: block;
+div.container a.navbar-brand img {
+    margin-right: 10px;
 }
 
-.dropdown-submenu>a:after {
-    display: block;
-    content: " ";
-    float: right;
-    width: 0;
-    height: 0;
-    border-color: transparent;
-    border-style: solid;
-    border-width: 5px 0 5px 5px;
-    border-left-color: #ccc;
-    margin-top: 5px;
-    margin-right: -10px;
+@media (min-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 51px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+        background-color: #f5f5f5;
+        border-right: 1px solid #eee;
+    }
 }
 
-.dropdown-submenu:hover>a:after {
-    border-left-color: #fff;
+@media (max-width: 768px) {
+    .sidebar {
+        padding-top: 60px;
+    }
 }
 
-.dropdown-submenu.pull-left {
-    float: none;
+#admin-sidebar {
+    margin-right: -21px; /* 20px padding + 1px border */
+    margin-bottom: 20px;
+    margin-left: -20px;
 }
 
-.dropdown-submenu.pull-left>.dropdown-menu {
-    left: -100%;
-    margin-left: 10px;
-    -webkit-border-radius: 6px 0 6px 6px;
-    -moz-border-radius: 6px 0 6px 6px;
-    border-radius: 6px 0 6px 6px;
+.nav-sidebar > li > a {
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
-/* End menu */
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+    color: #fff;
+    background-color: #428bca;
+}
+
+/* Main Content */
+
+#main-content {
+    padding: 20px;
+}
+@media (min-width: 768px) {
+    #main-content {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+}
 
 .sortable-table th:hover {
 	cursor: pointer;

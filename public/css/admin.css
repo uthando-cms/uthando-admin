@@ -61,10 +61,10 @@ body {
 
 /* nav & side bar */
 .navbar-brand  {
-    padding-left: 40px;
+    padding-left: 55px;
     background: url('../img/zf2-logo.png')
-    5px center
-    no-repeat;
+                20px center
+                no-repeat;
 }
 
 @media (min-width: 768px) {
@@ -166,6 +166,7 @@ body {
     position: relative;
     overflow: hidden;
 }
+
 .btn-file input[type=file] {
     position: absolute;
     top: 0;

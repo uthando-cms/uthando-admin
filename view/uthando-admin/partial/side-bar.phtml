@@ -3,7 +3,6 @@
     $iterator   = new RecursiveIteratorIterator($this->container, RecursiveIteratorIterator::SELF_FIRST);
     $prevDepth  = -1;
     $count      = -1;
-    $maxDepth   = iterator_count($iterator) - 1;
     $html       = '';
 
     /* @var $page Zend\Navigation\Page\Mvc */

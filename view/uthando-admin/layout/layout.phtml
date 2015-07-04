@@ -15,10 +15,8 @@
             ->appendStylesheet($this->basePath('css/uthando-admin.css'));?>
 
         <!-- Scripts -->
-        <?=$this->headScript()
-            ->appendFile('//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.0.2/metisMenu.min.js')
-            ->appendFile($this->basePath('js/uthando-admin.js'));?>
-       
+        <?=$this->headScript();?>
+
     </head>
     <body>
     	<nav class="navbar navbar-default navbar-fixed-top">
@@ -93,7 +91,10 @@
             </div>
         </div>
     	<!-- /container -->
-        <?=$this->inlineScript();?>
+        <?=$this->inlineScript()
+            ->appendFile('//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.0.2/metisMenu.min.js')
+            ->appendFile($this->basePath('js/uthando-admin.js'))
+        ;?>
     </body>
 </html>
 

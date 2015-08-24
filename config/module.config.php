@@ -102,12 +102,11 @@ return [
 				'route'     => 'home',
 				'resource'  => 'menu:admin',
 			],
-			'modules' => [
-                'label'     => 'Modules',
+			'admin' => [
+                'label'     => 'Admin',
                 'route'     => 'admin',
                 'resource'  => 'menu:admin',
-                'pages'     => [],
-			],
+            ],
 		],
 	],
 ];

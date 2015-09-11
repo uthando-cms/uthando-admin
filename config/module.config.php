@@ -63,7 +63,7 @@ return [
     ],
     'view_helpers' => [
         'invokables' => [
-            'Phpinfo'              => 'UthandoAdmin\View\Phpinfo',
+            'PhpInfo'              => 'UthandoAdmin\View\PhpInfo',
             'UthandoFormElement'   => 'UthandoAdmin\View\UthandoFormElement',
         ],
     ],

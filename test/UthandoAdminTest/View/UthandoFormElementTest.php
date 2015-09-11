@@ -2,22 +2,17 @@
 /**
  * Uthando CMS (http://www.shaunfreeman.co.uk/)
  *
- * @package   UthandoAdmin
+ * @package   UthandoAdminTest\View
  * @author    Shaun Freeman <shaun@shaunfreeman.co.uk>
  * @copyright Copyright (c) 2014 Shaun Freeman. (http://www.shaunfreeman.co.uk)
  * @license   see LICENSE.txt
  */
 
-namespace UthandoAdmin;
+namespace UthandoAdminTest\View;
 
-use Exception;
+use UthandoAdminTest\Framework\TestCase;
 
-/**
- * Class AdminException
- *
- * @package UthandoAdmin
- */
-class AdminException extends Exception
+class UthandoFormElementTest extends TestCase
 {
 
 }

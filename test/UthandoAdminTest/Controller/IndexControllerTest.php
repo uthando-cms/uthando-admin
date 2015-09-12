@@ -17,6 +17,28 @@ class IndexControllerTest extends TestCase
 {
     protected $traceError = true;
 
+    public function testAdminCanAccessIndexAction()
+    {
+        /* @var $auth \UthandoUser\Service\Authentication */
+        $auth = $this->getApplicationServiceLocator()
+            ->get('Zend\Authentication\AuthenticationService');
+        $user = new TestUserModel();
+
+        $user->setFirstname('Joe')
+            ->setLastname('Bloggs')
+            ->setEmail('email@example.com')
+            ->setRole('admin');
+        $auth->getStorage()->write($user);
+
+        $this->dispatch('/admin');
+        $this->assertResponseStatusCode('200');
+
+        $this->assertModuleName('UthandoAdmin');
+        $this->assertControllerName('UthandoAdmin\Controller\Index');
+        $this->assertControllerClass('IndexController');
+        $this->assertMatchedRouteName('admin');
+    }
+
     public function testIndexActionRedirectsIfNotAuthenticated()
     {
         $this->dispatch('/admin');
@@ -44,25 +66,5 @@ class IndexControllerTest extends TestCase
         $this->assertRedirectTo('/');
     }
 
-    public function testAdminCanAccessIndexAction()
-    {
-        /* @var $auth \UthandoUser\Service\Authentication */
-        $auth = $this->getApplicationServiceLocator()
-            ->get('Zend\Authentication\AuthenticationService');
-        $user = new TestUserModel();
 
-        $user->setFirstname('Joe')
-            ->setLastname('Bloggs')
-            ->setEmail('email@example.com')
-            ->setRole('admin');
-        $auth->getStorage()->write($user);
-
-        $this->dispatch('/admin');
-        //$this->assertResponseStatusCode('200');
-
-        /*$this->assertModuleName('UthandoAdmin');
-        $this->assertControllerName('UthandoAdmin\Controller\Index');
-        $this->assertControllerClass('IndexController');
-        $this->assertMatchedRouteName('admin');*/
-    }
 }

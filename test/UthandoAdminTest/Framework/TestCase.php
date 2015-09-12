@@ -2,20 +2,15 @@
 
 namespace UthandoAdminTest\Framework;
 
-use PHPUnit_Framework_TestCase;
-use Zend\ServiceManager\ServiceManager;
+use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
-class TestCase extends PHPUnit_Framework_TestCase
+class TestCase extends AbstractHttpControllerTestCase
 {
-    protected static $serviceManager = null;
-    
-    public static function setServiceManager(ServiceManager $sm)
+    protected function setUp()
     {
-        self::$serviceManager = $sm;
-    }
-    
-    public function getServiceManager()
-    {
-    	return self::$serviceManager;
+        $this->setApplicationConfig(
+            include __DIR__ . '/../../application.config.php'
+        );
+        parent::setUp();
     }
 }

@@ -11,45 +11,54 @@
 namespace UthandoAdminTest\Controller;
 
 use UthandoAdminTest\Framework\TestCase;
-use Zend\Mvc\Router\Http\TreeRouteStack as HttpRouter;
-use UthandoAdmin\Controller\IndexController;
-use Zend\Http\Request;
-use Zend\Http\Response;
-use Zend\Mvc\MvcEvent;
-use Zend\Mvc\Router\RouteMatch;
+use UthandoUser\Model\User as TestUserModel;
 
 class IndexControllerTest extends TestCase
 {
-    protected $controller;
-    protected $request;
-    protected $response;
-    protected $routeMatch;
-    protected $event;
-
-    protected function setUp()
+    public function testIndexActionRedirectsIfNotAuthenticated()
     {
-        $serviceManager = $this->getServiceManager();
-        $this->controller = new IndexController();
-        $this->request    = new Request();
-        $this->routeMatch = new RouteMatch(array('controller' => 'index'));
-        $this->event      = new MvcEvent();
-        $config = $serviceManager->get('Config');
-        $routerConfig = isset($config['router']) ? $config['router'] : array();
-        $router = HttpRouter::factory($routerConfig);
+        $this->dispatch('/admin');
+        $this->assertResponseStatusCode(302);
 
-        $this->event->setRouter($router);
-        $this->event->setRouteMatch($this->routeMatch);
-        $this->controller->setEvent($this->event);
-        $this->controller->setServiceLocator($serviceManager);
+        $this->assertRedirectTo('/user');
     }
 
-    public function testIndexActionCanBeAccessed()
+    public function testRegisteredUserRedirectsToHome()
     {
-        $this->routeMatch->setParam('action', 'index');
+        /* @var $auth \UthandoUser\Service\Authentication */
+        $auth = $this->getApplicationServiceLocator()->get('Zend\Authentication\AuthenticationService');
+        $user = new TestUserModel();
 
-        $result   = $this->controller->dispatch($this->request);
-        $response = $this->controller->getResponse();
+        $user->setFirstname('Joe')
+            ->setLastname('Bloggs')
+            ->setEmail('email@example.com')
+            ->setRole('registered');
+        $auth->getStorage()->write($user);
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->dispatch('/admin');
+
+        $this->assertResponseStatusCode(302);
+        $this->assertRedirectTo('/');
+    }
+
+    public function testAdminCanAccessIndexAction()
+    {
+        /* @var $auth \UthandoUser\Service\Authentication */
+        $auth = $this->getApplicationServiceLocator()->get('Zend\Authentication\AuthenticationService');
+        $user = new TestUserModel();
+
+        $user->setFirstname('Joe')
+            ->setLastname('Bloggs')
+            ->setEmail('email@example.com')
+            ->setRole('admin');
+        $auth->getStorage()->write($user);
+
+        $this->dispatch('/admin');
+        $this->assertResponseStatusCode('200');
+
+        $this->assertModuleName('UthandoAdmin');
+        $this->assertControllerName('UthandoAdmin\Controller\Index');
+        $this->assertControllerClass('IndexController');
+        $this->assertMatchedRouteName('admin');
     }
 }

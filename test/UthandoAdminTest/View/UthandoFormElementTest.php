@@ -14,5 +14,11 @@ use UthandoAdminTest\Framework\TestCase;
 
 class UthandoFormElementTest extends TestCase
 {
-
+    public function testCanGetFromServiceManager()
+    {
+        $helperManager = $this->getApplicationServiceLocator()
+            ->get('ViewHelperManager');
+        $uthandoFormElement = $helperManager->get('UthandoFormElement');
+        $this->assertInstanceOf('UthandoAdmin\View\UthandoFormElement', $uthandoFormElement);
+    }
 }

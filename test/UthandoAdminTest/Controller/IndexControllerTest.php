@@ -15,15 +15,7 @@ use UthandoUser\Model\User as TestUserModel;
 
 class IndexControllerTest extends TestCase
 {
-    public function setUp()
-    {
-        /*$controllerMock =
-        $serviceManager = $this->getApplicationServiceLocator();
-        $serviceManager->setAllowOverride(true);
-        $serviceManager->setService('UthandoAdmin\Controller\Index', $controllerMock);*/
-
-        parent::setUp();
-    }
+    protected $traceError = true;
 
     public function testIndexActionRedirectsIfNotAuthenticated()
     {

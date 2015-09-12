@@ -5,12 +5,9 @@ namespace UthandoAdminTest;
 use Zend\Loader\AutoloaderFactory;
 use Zend\Mvc\Service\ServiceManagerConfig;
 use Zend\ServiceManager\ServiceManager;
-use RuntimeException;
 
-ob_start();
 error_reporting(E_ALL | E_STRICT);
 chdir(__DIR__);
-define('APPLICATION_PATH', dirname('../../../'));
 
 /**
  * Test bootstrap, for setting up autoloading
@@ -21,16 +18,44 @@ class Bootstrap
 
     public static function init()
     {
-        // use ModuleManager to load this module and it's dependencies
-        $config = include_once './TestConfig.php.dist';
-        static::chroot();
+        $zf2ModulePaths = array(dirname(dirname(__DIR__)));
+        if (($path = static::findParentPath('vendor'))) {
+            $zf2ModulePaths[] = $path;
+        }
+        if (($path = static::findParentPath('module')) !== $zf2ModulePaths[0]) {
+            $zf2ModulePaths[] = $path;
+        }
+        if (($path = static::findParentPath('devmodules')) !== $zf2ModulePaths[0]) {
+            $zf2ModulePaths[] = $path;
+        }
 
         static::initAutoloader();
+
+        // use ModuleManager to load this module and it's dependencies
+        $config = array(
+            'module_listener_options' => array(
+                'module_paths' => $zf2ModulePaths,
+            ),
+            'modules' => array(
+                'Application',
+                'UthandoAdmin',
+                'UthandoCommon',
+                'UthandoThemeManager',
+                'UthandoNavigation',
+                'UthandoUser',
+            )
+        );
 
         $serviceManager = new ServiceManager(new ServiceManagerConfig());
         $serviceManager->setService('ApplicationConfig', $config);
         $serviceManager->get('ModuleManager')->loadModules();
         static::$serviceManager = $serviceManager;
+    }
+
+    public static function chroot()
+    {
+        $rootPath = dirname(static::findParentPath('module'));
+        chdir($rootPath);
     }
 
     public static function getServiceManager()
@@ -40,10 +65,12 @@ class Bootstrap
 
     protected static function initAutoloader()
     {
-        // Assumes PHP Composer autoloader w/compiled classmaps, etc.
-        require_once 'vendor/autoload.php';
+        $vendorPath = static::findParentPath('vendor');
 
-        // This namespace is not in classmap.
+        if (file_exists($vendorPath . '/autoload.php')) {
+            include $vendorPath . '/autoload.php';
+        }
+
         AutoloaderFactory::factory(array(
             'Zend\Loader\StandardAutoloader' => array(
                 'autoregister_zf' => true,
@@ -54,24 +81,20 @@ class Bootstrap
         ));
     }
 
-    protected static function chroot()
+    protected static function findParentPath($path)
     {
-        chdir(__DIR__);
-
+        $dir = __DIR__;
         $previousDir = '.';
-        while (!file_exists('config/application.config.php')) {
-            $dir = dirname(getcwd());
+        while (!is_dir($dir . '/' . $path)) {
+            $dir = dirname($dir);
             if ($previousDir === $dir) {
-                throw new RuntimeException(
-                    'Unable to locate "config/application.config.php": ' .
-                    'is UthandoDomPdf in a subdir of your application skeleton?'
-                );
+                return false;
             }
             $previousDir = $dir;
-            chdir($dir);
-            //define('APPLICATION_PATH', dirname($dir));
         }
+        return $dir . '/' . $path;
     }
 }
 
 Bootstrap::init();
+Bootstrap::chroot();

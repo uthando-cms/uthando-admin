@@ -3,18 +3,24 @@ return [
     'modules' => [
         'Application',
         'UthandoAdmin',
+        'UthandoCommon',
+        'UthandoThemeManager',
+        'UthandoNavigation',
         'UthandoUser',
     ],
     'module_listener_options' => [
-        'config_cache_enabled' => false,
-        'cache_dir'            => 'data/cache',
         'module_paths' => [
-            './vendor',
+            './module',
             './devmodules',
-            './module'
+            './vendor',
         ],
     ],
     'service_manager' => [
-        'use_defaults' => true,
+        'invokables' => [
+            'ModuleRouteListener' => 'Zend\Mvc\ModuleRouteListener',
+        ],
+        'factories' => [
+            'Navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
+        ],
     ],
 ];

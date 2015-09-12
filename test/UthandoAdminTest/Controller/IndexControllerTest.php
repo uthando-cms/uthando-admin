@@ -28,7 +28,8 @@ class IndexControllerTest extends TestCase
     public function testRegisteredUserRedirectsToHome()
     {
         /* @var $auth \UthandoUser\Service\Authentication */
-        $auth = $this->getApplicationServiceLocator()->get('Zend\Authentication\AuthenticationService');
+        $auth = $this->getApplicationServiceLocator()
+            ->get('Zend\Authentication\AuthenticationService');
         $user = new TestUserModel();
 
         $user->setFirstname('Joe')
@@ -43,10 +44,11 @@ class IndexControllerTest extends TestCase
         $this->assertRedirectTo('/');
     }
 
-    /*public function testAdminCanAccessIndexAction()
+    public function testAdminCanAccessIndexAction()
     {
         /* @var $auth \UthandoUser\Service\Authentication */
-        /*$auth = $this->getApplicationServiceLocator()->get('Zend\Authentication\AuthenticationService');
+        $auth = $this->getApplicationServiceLocator()
+            ->get('Zend\Authentication\AuthenticationService');
         $user = new TestUserModel();
 
         $user->setFirstname('Joe')
@@ -62,5 +64,5 @@ class IndexControllerTest extends TestCase
         $this->assertControllerName('UthandoAdmin\Controller\Index');
         $this->assertControllerClass('IndexController');
         $this->assertMatchedRouteName('admin');
-    }*/
+    }
 }

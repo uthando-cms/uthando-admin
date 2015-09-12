@@ -12,7 +12,6 @@ namespace UthandoAdminTest\Controller;
 
 use UthandoAdminTest\Framework\TestCase;
 use UthandoUser\Model\User as TestUserModel;
-use UthandoUser\Service\Authentication as TestAuth;
 
 class IndexControllerTest extends TestCase
 {
@@ -46,7 +45,8 @@ class IndexControllerTest extends TestCase
 
     public function testAdminCanAccessIndexAction()
     {
-        $auth = new TestAuth();
+        /* @var $auth \UthandoUser\Service\Authentication */
+        $auth = $this->getApplicationServiceLocator()->get('Zend\Authentication\AuthenticationService');
         $user = new TestUserModel();
 
         $user->setFirstname('Joe')

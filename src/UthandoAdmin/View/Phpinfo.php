@@ -27,6 +27,7 @@ class PhpInfo extends AbstractHelper
 		ob_end_clean();
 
 		preg_match_all('#<body[^>]*>(.*)</body>#siU', $phpInfo, $output);
+        var_dump($output);
         $output = (count($output[1]) > 0) ? implode('', $output[1]) : '';
 		$output = preg_replace('#<table#', '<table class="table table-bordered"', $output);
 		$output = preg_replace('#(\w),(\w)#', '\1, \2', $output);

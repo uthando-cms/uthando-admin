@@ -36,7 +36,7 @@ class Bootstrap
                 'UthandoThemeManager',
                 'UthandoNavigation',
                 'UthandoUser',
-            )
+            ),
         );
 
         $serviceManager = new ServiceManager(new ServiceManagerConfig());

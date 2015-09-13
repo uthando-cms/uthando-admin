@@ -26,7 +26,7 @@ class PhpInfo extends AbstractHelper
         $phpInfo = ob_get_contents();
         ob_end_clean();
 
-        preg_match_all('#<body[^>]*>(.*)</body>#siU', $phpInfo, $output);
+        /*preg_match_all('#<body[^>]*>(.*)</body>#siU', $phpInfo, $output);
                
         if (is_array($output[1]) && !empty($output[1])) {
             $output = preg_replace('#<table#', '<table class="table table-bordered"', implode('', $output[1]));
@@ -37,8 +37,8 @@ class PhpInfo extends AbstractHelper
             $output = str_replace('</div>', '', $output);
         } else {
             $output = 'PHP info not available';
-        }
+        }*/
 
-        return $output;
+        return $phpInfo;
     }
 }

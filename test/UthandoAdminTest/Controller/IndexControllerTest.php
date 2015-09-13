@@ -19,19 +19,6 @@ class IndexControllerTest extends TestCase
 
     public function testAdminCanAccessIndexAction()
     {
-        $phpInfoMock = $this->getMockBuilder('UthandoAdmin\View\PhpInfo')
-            ->disableOriginalConstructor()
-            ->getMock();
-
-         $phpInfoMock->expects($this->once())
-             ->method('__invoke')
-             ->will($this->returnValue(''));
-         
-         $serviceManager = $this->getApplicationServiceLocator()
-             ->get('ViewHelperManager');
-        $serviceManager->setAllowOverride(true);
-        $serviceManager->setService('PhpInfo', $phpInfoMock);
-
         /* @var $auth \UthandoUser\Service\Authentication */
         $auth = $this->getApplicationServiceLocator()
             ->get('Zend\Authentication\AuthenticationService');
@@ -45,7 +32,7 @@ class IndexControllerTest extends TestCase
 
         $this->dispatch('/admin');
         //$this->assertEquals('200', $this->getResponse()->getContent());
-        //$this->assertResponseStatusCode(200);
+        $this->assertResponseStatusCode(200);
 
         $this->assertModuleName('UthandoAdmin');
         $this->assertControllerName('UthandoAdmin\Controller\Index');

@@ -31,7 +31,7 @@ class IndexControllerTest extends TestCase
         $auth->getStorage()->write($user);
 
         $this->dispatch('/admin');
-        //$this->assertEquals('200', $this->getResponse()->getContent());
+        $this->assertEquals('200', $this->getResponse()->getContent());
         $this->assertResponseStatusCode(200);
 
         $this->assertModuleName('UthandoAdmin');

@@ -10,7 +10,7 @@
     </testsuites>
 
     <filter>
-        <whitelist processUncoveredFilesFromWhitelist="false"> <!-- addUncoveredFilesFromWhitelist / processUncoveredFilesFromWhitelist  -->
+        <whitelist processUncoveredFilesFromWhitelist="true"> <!-- addUncoveredFilesFromWhitelist / processUncoveredFilesFromWhitelist  -->
             <directory>../src</directory>
         </whitelist>
     </filter>

@@ -21,10 +21,12 @@ class PhpInfo extends AbstractHelper
 { 
     public function __invoke()
     {
-        ob_start();
+        $output = '';
+
+        /*ob_start();
         phpinfo();
         $phpInfo = ob_get_contents();
-        ob_end_clean();
+        ob_end_clean();*/
 
         /*preg_match_all('#<body[^>]*>(.*)</body>#siU', $phpInfo, $output);
                
@@ -39,6 +41,6 @@ class PhpInfo extends AbstractHelper
             $output = 'PHP info not available';
         }*/
 
-        return $phpInfo;
+        return $output;
     }
 }

@@ -1,34 +1,39 @@
 {
-    "name": "uthando-cms/uthando-admin",
-    "description": "Admin module for Uthando CMS",
-    "license": "BSD-3-Clause",
-    "keywords": [ "framework", "zf2","cms", "uthando", "admin"],
-    "homepage": "http://shaunfreeman.name/",
-    "authors": [
-        {
-            "name": "Shaun Freeman",
-            "email": "shaun@shaunfreeman.co.uk",
-            "homepage": "https://github.com/shaunfreeman",
-            "role": "Developer"
-        }
-    ],
-    "require" : {
-	    "php" : ">=5.4",
-	    "zendframework/zend-version" : "2.*",
-	    "uthando-cms/uthando-common" : "1.*",
-	    "uthando-cms/uthando-navigation" : "1.*",
-	    "uthando-cms/uthando-user" : "1.*",
-        "rwoverdijk/assetmanager": "1.*"
-    },
-    "require-dev" : {
-    	"zendframework/zendframework" : "2.*"
-    },
-    "autoload": {
-        "psr-0": {
-            "UthandoAdmin": "src/"
-        },
-        "classmap": [
-            "./Module.php"
-        ]
+  "name": "uthando-cms/uthando-admin",
+  "description": "Admin module for Uthando CMS",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "framework",
+    "zf2",
+    "cms",
+    "uthando",
+    "admin"
+  ],
+  "homepage": "http://shaunfreeman.name/",
+  "authors": [
+    {
+      "name": "Shaun Freeman",
+      "email": "shaun@shaunfreeman.co.uk",
+      "homepage": "https://github.com/shaunfreeman",
+      "role": "Developer"
     }
+  ],
+  "require": {
+    "php": ">=5.5",
+    "uthando-cms/uthando-common": "1.*",
+    "uthando-cms/uthando-navigation": "1.*",
+    "uthando-cms/uthando-user": "1.*",
+    "rwoverdijk/assetmanager": "1.*"
+  },
+  "require-dev": {
+    "zendframework/zendframework": "2.*"
+  },
+  "autoload": {
+    "psr-0": {
+      "UthandoAdmin": "src/"
+    },
+    "classmap": [
+      "./Module.php"
+    ]
+  }
 }

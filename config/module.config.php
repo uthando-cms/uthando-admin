@@ -106,6 +106,18 @@ return [
                 'label'     => 'Admin',
                 'route'     => 'admin',
                 'resource'  => 'menu:admin',
+                'pages'     => [
+                    'phpinfo'       => [
+                        'label' => 'PHP Info',
+                        'route' => 'admin',
+                        'resource' => 'menu:admin'
+                    ],
+                    'settings' => [
+                        'label' => 'Settings',
+                        'uri' => '#',
+                        'resource' => 'menu:admin',
+                    ],
+                ],
             ],
 		],
 	],

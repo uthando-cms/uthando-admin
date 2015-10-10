@@ -31,9 +31,11 @@
                     <a class="navbar-brand" href="<?=$this->url('home'); ?>">
                         Uthando CMS
                     </a>
+                    <p class="navbar-text"><?=$this->pageTitle;?></p>
                 </div>
 
     			<div class="admin-collapse navbar-collapse collapse ">
+
                     <?php if ($this->identity()):?>
     				<div class="dropdown">
     					<ul class="nav navbar-nav navbar-right">

@@ -67,6 +67,10 @@ body {
                 no-repeat;
 }
 
+.navbar-header .navbar-text {
+    font-weight: bold;
+}
+
 @media (min-width: 768px) {
     .sidebar {
         position: fixed;

@@ -19,14 +19,11 @@
     }
   ],
   "require": {
-    "php": ">=5.5",
-    "uthando-cms/uthando-common": "1.*",
-    "uthando-cms/uthando-navigation": "1.*",
-    "uthando-cms/uthando-user": "1.*",
+    "php": ">=7.0",
+    "uthando-cms/uthando-common": "2.*",
+    "uthando-cms/uthando-navigation": "2.*",
+    "uthando-cms/uthando-user": "2.*",
     "rwoverdijk/assetmanager": "1.*"
-  },
-  "require-dev": {
-    "zendframework/zendframework": "2.*"
   },
   "autoload": {
     "psr-0": {

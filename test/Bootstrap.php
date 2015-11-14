@@ -31,8 +31,8 @@ class Bootstrap
             ),
             'modules' => array(
                 'Application',
-                'UthandoAdmin',
                 'UthandoCommon',
+                'UthandoAdmin',
                 'UthandoThemeManager',
                 'UthandoNavigation',
                 'UthandoUser',

@@ -19,8 +19,8 @@ use Zend\Mvc\Controller\AbstractActionController;
  */
 class IndexController extends AbstractActionController
 {
-	public function indexAction()
-	{	
-		return [];
-	}
+    public function indexAction()
+    {
+        return [];
+    }
 }

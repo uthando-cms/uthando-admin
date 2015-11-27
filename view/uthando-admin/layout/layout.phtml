@@ -12,7 +12,9 @@
         
         <!-- Styles -->
         <?=$this->headLink()
-            ->appendStylesheet($this->basePath('css/uthando-admin.css'));?>
+            ->appendStylesheet($this->basePath('css/uthando-admin.css'))
+            ->appendStylesheet('//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css');
+        ?>
 
         <!-- Scripts -->
         <?=$this->headScript();?>
@@ -95,6 +97,8 @@
     	<!-- /container -->
         <?=$this->inlineScript()
             ->appendFile('//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.0.2/metisMenu.min.js')
+            ->appendFile('//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js')
+            ->appendFile('//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js')
             ->appendFile($this->basePath('js/uthando-admin.js'))
         ;?>
     </body>

@@ -12,7 +12,7 @@ return [
                     'js/bootbox.min.js',
                 ],
                 'css/uthando-admin.css' => [
-                    'css/admin.css'
+                    'css/admin.css',
                 ],
             ],
             'paths' => [

@@ -90,6 +90,46 @@ var admin = {
                 $(el).html(responseText);
             }
         });
+    },
+
+    tinyMceFileBrowser : function(callback, value, meta, url, baseUrl) {
+        var dialog = bootbox.dialog({
+            title: "File Uploader",
+            show: false,
+            message: '<i class="fa fa-spinner fa-spin"></i>&nbsp;Loading',
+            buttons: {
+                main: {
+                    label: "Close",
+                    className: "btn-default"
+                }
+            }
+        });
+        dialog.css('z-index', '1000000');
+        dialog.on('show.bs.modal', function () {
+            $(this).find('.modal-body').load(url);
+        });
+        dialog.on('hide.bs.modal', function (e) {
+            $(this).find('.modal-body').html('<i class="fa fa-spinner fa-spin"></i>&nbsp;Loading');
+
+            if (admin.upload && admin.upload.status) {
+                var imagePath = baseUrl;
+                // Provide file and text for the link dialog
+                /*if (meta.filetype == 'file') {
+                 callback(admin.upload.image.name);
+                 }*/
+
+                // Provide image and alt text for the image dialog
+                if (meta.filetype == 'image') {
+                    callback(imagePath + admin.upload.image.name);
+                }
+
+                // Provide alternative source and posted for the media dialog
+                /*if (meta.filetype == 'media') {
+                 callback(admin.upload.image.name);
+                 }*/
+            }
+        });
+        dialog.modal('show');
     }
 };
 

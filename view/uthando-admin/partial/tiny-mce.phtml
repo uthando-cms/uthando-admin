@@ -4,7 +4,7 @@ $filemanagerUrl = $this->fileManagerUrl ?? $this->url('admin/uploader', [
     'action'    => 'upload-form',
 ]);
 
-$imageBasePath = $this->basePath ?? $this->serverUrl($this->basePath('/userfiles/'));
+$imageBasePath = $this->basePath ?? $this->basePath('/userfiles/');
 ?>
 <?=$this->inlineScript()
     ->appendFile('//cdn.tinymce.com/4/tinymce.min.js');
@@ -26,7 +26,7 @@ $imageBasePath = $this->basePath ?? $this->serverUrl($this->basePath('/userfiles
             image_advtab: true,
 
             bootstrapConfig: {
-                'imagesPath': '<?=$this->serverUrl($imageBasePath);?>/' // replace with your images folder path
+                'imagesPath': '<?=$this->serverUrl($imageBasePath);?>' // replace with your images folder path
             },
 
             external_plugins: {

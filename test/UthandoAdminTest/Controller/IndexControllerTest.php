@@ -44,7 +44,7 @@ class IndexControllerTest extends TestCase
         $this->dispatch('/admin');
         $this->assertResponseStatusCode(302);
 
-        $this->assertRedirectTo('/user');
+        $this->assertRedirectTo('/user/');
     }
 
     public function testRegisteredUserRedirectsToHome()
@@ -65,6 +65,4 @@ class IndexControllerTest extends TestCase
         $this->assertResponseStatusCode(302);
         $this->assertRedirectTo('/');
     }
-
-
 }

@@ -10,6 +10,7 @@ before_script:
   - git clone git://github.com/uthando-cms/uthando-navigation.git
   - git clone git://github.com/uthando-cms/uthando-theme-manager.git
   - git clone git://github.com/uthando-cms/uthando-user.git
+  - cp -R ./uthando-dompdf/test/composer.test.json ./uthando/composer.json
   - cd uthando
   - composer install
   - cp -R ../uthando-admin ./module/UthandoAdmin

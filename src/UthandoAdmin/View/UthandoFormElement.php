@@ -10,12 +10,17 @@
 
 namespace UthandoAdmin\View;
 
+use Zend\Form\Form;
 use Zend\Form\View\Helper\AbstractHelper;
+use Zend\Form\View\Helper\FormElement;
+use Zend\View\Helper\Partial;
+use Zend\View\Renderer\PhpRenderer;
 
 /**
  * Class UthandoFormElement
  *
  * @package UthandoAdmin\View
+ * @method PhpRenderer getView()
  */
 class UthandoFormElement extends AbstractHelper
 {
@@ -27,35 +32,41 @@ class UthandoFormElement extends AbstractHelper
         'labelWidth'    => '2',
         'elementWidth'  => '4',
     ];
-    
-    public function __invoke($options = [])
-    {
-        $options = array_merge($this->options, $options);
 
-        $formElementHelper = $this->view->plugin('formElement');
+    /**
+     * @param array $options
+     * @return string
+     */
+    public function __invoke(array $options = []) : string
+    {
+        $options            = array_merge($this->options, $options);
+        $view               = $this->getView();
+        /* @var Form $form */
+        $form               = $view->get('form');
+        /* @var FormElement $formElementHelper */
+        $formElementHelper  = $view->plugin('formElement');
+        /* @var Partial $partialHelper */
+        $partialHelper      = $view->plugin('partial');
+        $html               = '';
+        $formElements       = ($view->get('formElements')) ?? [];
         
-        /** @var \Zend\View\Helper\Partial $partialHelper */
-        $partialHelper = $this->view->plugin('partial');
-        
-        $html = '';
-        
-        foreach ($this->view->formElements as $element) {
-            switch ($this->view->form->get($element)->getAttribute('type')) {
+        foreach ($formElements as $element) {
+            switch ($form->get($element)->getAttribute('type')) {
             	case 'hidden':
-            	    $html .= $formElementHelper($this->view->form->get($element));
+            	    $html .= $formElementHelper($form->get($element));
             	    break;
             	case 'checkbox':
             	case 'radio':
             	    $html .= sprintf(
             	       $this->checkboxRadio,
             	       $element,
-            	       $this->view->form->get($element)->getLabel(),
-            	       $formElementHelper($this->view->form->get($element))
+            	       $form->get($element)->getLabel(),
+            	       $formElementHelper($form->get($element))
                     );
             	    break;
             	default:
             	    $html .= $partialHelper($this->partial, [
-                        'element'   => $this->view->form->get($element),
+                        'element'   => $form->get($element),
                         'options'   => $options,
             	    ]);
             }

@@ -19,8 +19,11 @@ use Zend\Navigation\Service\AbstractNavigationFactory;
  */
 class AdminNavigationFactory extends AbstractNavigationFactory
 {
-	protected function getName()
-	{
-		return 'admin';
-	}
+    /**
+     * @return string
+     */
+    protected function getName() : string
+    {
+        return 'admin';
+    }
 }

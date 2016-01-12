@@ -19,7 +19,10 @@ use Zend\View\Helper\AbstractHelper;
  */
 class PhpInfo extends AbstractHelper
 {
-    public function __invoke()
+    /**
+     * @return mixed|string
+     */
+    public function __invoke() : string
     {
         ob_start();
         phpinfo();

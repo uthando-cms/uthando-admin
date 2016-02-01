@@ -230,6 +230,12 @@ body {
     padding-left: 1em;
 }
 
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
 .sortable-table th:hover {
 	cursor: pointer;
 }

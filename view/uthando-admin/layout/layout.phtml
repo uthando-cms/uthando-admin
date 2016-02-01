@@ -75,14 +75,22 @@
                     </div>
 
                     <div class="row-fluid">
-                        <div class="col-md-12">
+                        <div class="col-sm-12 vert-offset-bottom-1">
+                            <?=$this->navigation('UthandoAdmin\Navigation')
+                                ->breadcrumbs()
+                                ->setRenderInvisible(true)
+                                ->setSeparator(' / ');
+                            ?>
+                        </div>
+
+                        <div class="col-sm-12">
                             <?=$this->content; ?>
                             <hr>
                         </div>
                     </div>
 
                     <div class="row-fluid">
-                        <div class="col-md-12">
+                        <div class="col-sm-12">
                             <footer>
                                 <p>&copy; 2013 - <?=date('Y'); ?> by <a
                                         href="http://www.shaunfreeman.name">Shaun Freeman</a>. All rights

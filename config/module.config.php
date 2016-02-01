@@ -21,7 +21,7 @@ return [
         ],
         'caching' => [
             'default' => [
-                'cache'     => 'FilesystemCache',
+                'cache' => 'FilesystemCache',
                 'options' => [
                     'dir' => 'data/cache', // path/to/cache
                 ],
@@ -45,51 +45,51 @@ return [
     ],
     'view_helpers' => [
         'invokables' => [
-            'PhpInfo'              => 'UthandoAdmin\View\PhpInfo',
-            'UthandoFormElement'   => 'UthandoAdmin\View\UthandoFormElement',
+            'PhpInfo' => 'UthandoAdmin\View\PhpInfo',
+            'UthandoFormElement' => 'UthandoAdmin\View\UthandoFormElement',
         ],
     ],
     'view_manager' => [
-        'template_map' => include __DIR__  .'/../template_map.php',
+        'template_map' => include __DIR__ . '/../template_map.php',
     ],
-	'router' => [
-		'routes' => [
-			'admin' => [
-				'type'          => 'Literal',
-				'options'       => [
-					'route'    => '/admin',
-					'defaults' => [
-						'__NAMESPACE__' => 'UthandoAdmin\Controller',
-						'controller'    => 'Index',
-						'action'        => 'index',
-					    'force-ssl'     => 'ssl',
-                        'is-admin'      => true,
-					],
-				],
-				'may_terminate' => true,
-			],
-		],
-	],
-	'navigation' => [
-        'default' => [
+    'router' => [
+        'routes' => [
             'admin' => [
-                'label'     => 'Admin',
-                'route'     => 'admin',
-                'resource'  => 'menu:admin',
+                'type' => 'Literal',
+                'options' => [
+                    'route' => '/admin',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'UthandoAdmin\Controller',
+                        'controller' => 'Index',
+                        'action' => 'index',
+                        'force-ssl' => 'ssl',
+                        'is-admin' => true,
+                    ],
+                ],
+                'may_terminate' => true,
             ],
         ],
-		'admin' => [
-			'home' => [
-				'label'     => 'Home',
-				'route'     => 'home',
-				'resource'  => 'menu:admin',
-			],
-			'admin' => [
-                'label'     => 'Admin',
-                'route'     => 'admin',
-                'resource'  => 'menu:admin',
-                'pages'     => [
-                    'phpinfo'       => [
+    ],
+    'navigation' => [
+        'default' => [
+            'admin' => [
+                'label' => 'Admin',
+                'route' => 'admin',
+                'resource' => 'menu:admin',
+            ],
+        ],
+        'admin' => [
+            'home' => [
+                'label' => 'Home',
+                'route' => 'home',
+                'resource' => 'menu:admin',
+            ],
+            'admin' => [
+                'label' => 'Admin',
+                'route' => 'admin',
+                'resource' => 'menu:admin',
+                'pages' => [
+                    'phpinfo' => [
                         'label' => 'PHP Info',
                         'route' => 'admin',
                         'resource' => 'menu:admin'
@@ -101,6 +101,6 @@ return [
                     ],
                 ],
             ],
-		],
-	],
+        ],
+    ],
 ];

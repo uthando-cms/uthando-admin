@@ -27,7 +27,7 @@ $select->setAttribute('class', 'form-control');
                 ])) ?>
             <?php else: ?>
                 <?php $value = (isset($params[$input])) ? $params[$input] : null; ?>
-                <input type="text" class="form-control" name="<?= $input; ?>" placeholder="<?= ucwords($label) ?>:"
+                <input type="text" class="form-control" name="<?= $input; ?>" placeholder="<?= ucwords($label) ?>"
                        value="<?= $value; ?>">
             <?php endif; ?>
         </div>
@@ -36,8 +36,8 @@ $select->setAttribute('class', 'form-control');
     <div class="form-group">
         <?= $this->formSelect($select); ?>
     </div>
-    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Filter</button>
-    <button type="reset" class="btn btn-default">Reset</button>
+    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> <?=$this->translate('Filter');?></button>
+    <button type="reset" class="btn btn-default"><?=$this->translate('Reset');?></button>
     <?php if ($this->secondRowInputs): ?>
         <br>
         <?php foreach ($this->secondRowInputs as $element): ?>
@@ -54,6 +54,6 @@ $select->setAttribute('class', 'form-control');
 
 <?php $this->inlineScript()->captureStart(); ?>
 $('select[name=count]').on('change', function(){
-$('#table-<?= $this->name; ?>').dataGrid('doSearch');
+    $('#table-<?= $this->name; ?>').dataGrid('doSearch');
 });
 <?php $this->inlineScript()->captureEnd(); ?>

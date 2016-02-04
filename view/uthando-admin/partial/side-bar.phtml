@@ -10,7 +10,6 @@
         $depth          = $iterator->getDepth();
         $hasChildren    = $page->hasPages();
         $count++;
-        $icon           = ($page->getParams()['icon']) ?? 'bars';
 
         // when using partials we need to manually check for ACL conditions
         if( ! $page->isVisible() || !$this->uthandoNavigation()->accept($page)) continue;
@@ -29,7 +28,7 @@
             $html .= '<li id="' . strtolower($page->getLabel()) . '">';
             $html .= '<a class="parent">';
             if ($depth == 0) {
-                $html .= '<i class="fa ' . $page->getParams()['icon'] . ' fa-fw"></i> <span>'.$page->getLabel().'</span>';
+                $html .= '<i class="fa ' . (($page->getParams()['icon']) ?? 'bars') . ' fa-fw"></i> <span>'.$page->getLabel().'</span>';
             } else {
                 $html .= $page->getLabel();
             }
@@ -39,7 +38,7 @@
         } elseif ($depth == 0) {
             $html .= '<li>';
             $html .= '<a href="'.$page->getHref().'">';
-            $html .= '<i class="fa ' . $page->getParams()['icon'] . ' fa-fw"></i> <span>'.$page->getLabel().'</span>';
+            $html .= '<i class="fa ' . (($page->getParams()['icon']) ?? 'bars') . ' fa-fw"></i> <span>'.$page->getLabel().'</span>';
             $html .= '</a>';
         } else {
             $html .= '<li>';

@@ -10,6 +10,7 @@
         $depth          = $iterator->getDepth();
         $hasChildren    = $page->hasPages();
         $count++;
+        $icon           = ($page->getParams()['icon']) ?? 'bars';
 
         // when using partials we need to manually check for ACL conditions
         if( ! $page->isVisible() || !$this->uthandoNavigation()->accept($page)) continue;

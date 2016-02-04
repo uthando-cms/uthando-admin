@@ -9,6 +9,7 @@
  */
 
 namespace UthandoAdmin;
+
 use UthandoCommon\Config\ConfigInterface;
 use UthandoCommon\Config\ConfigTrait;
 

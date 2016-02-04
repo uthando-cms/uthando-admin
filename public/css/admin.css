@@ -331,14 +331,16 @@ h1, h2, h3, h4, h5, h6, p {
     visibility: visible;
 }
 
-#menu li li a.parent:after, #column-left.active #menu > li a.parent:after {
+#menu li li a.parent:after,
+#column-left.active #menu > li a.parent:after {
     font-family: FontAwesome, serif;
     content: "\f105";
     float: right;
     margin-right: 8px;
 }
 
-#menu li li.open > a.parent:after, #column-left.active #menu > li.open > a.parent:after {
+#menu li li.open > a.parent:after,
+#column-left.active #menu > li.open > a.parent:after {
     font-family: FontAwesome, serif;
     content: "\f107";
     float: right;
@@ -417,21 +419,29 @@ h1, h2, h3, h4, h5, h6, p {
 .nav > li.disabled > a {
     color: #999;
 }
-.nav > li.disabled > a:hover, .nav > li.disabled > a:focus {
+
+.nav > li.disabled > a:hover,
+.nav > li.disabled > a:focus {
     color: #999;
 }
+
 /* Tabs */
 .nav-tabs > li > a {
     color: #666;
     border-radius: 2px 2px 0 0;
 }
+
 .nav-tabs > li > a:hover {
     border-color: #eee #eee #ddd;
 }
+
 .nav-tabs {
     margin-bottom: 25px;
 }
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
     font-weight: bold;
     color: #333;
 }
@@ -489,6 +499,16 @@ h1, h2, h3, h4, h5, h6, p {
     background: white;
     cursor: inherit;
     display: block;
+}
+
+/* Forms */
+fieldset legend {
+    padding-bottom: 5px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin: 2px 0 0;
 }
 
 input[readonly] {

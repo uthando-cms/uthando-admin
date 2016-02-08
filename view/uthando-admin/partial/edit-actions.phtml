@@ -6,6 +6,7 @@
 
 <?php if ($edit):?>
     <a href="<?=$this->url($this->route, array_merge($routeParams, [
+        'action' => 'edit',
     	'id' => $this->id
     ])); ?>" class="btn btn-primary" data-toggle="tooltip" title="<?=$this->translate('Edit');?>"><i class="fa fa-edit"></i></a>
 <?php endif; ?>

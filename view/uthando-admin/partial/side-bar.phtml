@@ -38,7 +38,7 @@
         } elseif ($depth == 0) {
             $html .= '<li>';
             $html .= '<a href="'.$page->getHref().'">';
-            $html .= '<i class="fa ' . (($page->getParams()['icon']) ?? 'fa-bars') . ' fa-fw"></i> <span>'.$page->getLabel().'</span>';
+            $html .= '<i class="fa ' . (isset($page->getParams()['icon']) ? $page->getParams()['icon'] : 'fa-bars') . ' fa-fw"></i> <span>'.$page->getLabel().'</span>';
             $html .= '</a>';
         } else {
             $html .= '<li>';

@@ -3,7 +3,7 @@
     $iterator   = new RecursiveIteratorIterator($this->container, RecursiveIteratorIterator::SELF_FIRST);
     $prevDepth  = -1;
     $count      = -1;
-    $html       = '';
+    $html       = '<ul id="menu">';
 
     /* @var $page Zend\Navigation\Page\Mvc */
     foreach ($iterator as $page) {
@@ -20,13 +20,12 @@
             }
 
             $html .= '</li>';
-        } else {
-            $html .= '</li>';
         }
 
         if($hasChildren) {
             $html .= '<li id="' . strtolower($page->getLabel()) . '">';
             $html .= '<a class="parent">';
+
             if ($depth == 0) {
                 $html .= '<i class="fa ' . (isset($page->getParams()['icon']) ? $page->getParams()['icon'] : 'fa-bars') . ' fa-fw"></i> <span>'.$page->getLabel().'</span>';
             } else {
@@ -56,6 +55,4 @@
 
 ?>
 
-<ul id="menu">
-    <?=$html;?>
-</ul>
+<?=$html;?>

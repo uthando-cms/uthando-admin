@@ -516,6 +516,12 @@ input[readonly] {
     cursor: text !important;
 }
 
+/* code mirror */
+.CodeMirror {
+    border-top: 1px solid #888;
+    border-bottom: 1px solid #888;
+}
+
 /* Vertical Offset Bottom */
 .vert-offset-top-12 { margin-top: 12em; }
 

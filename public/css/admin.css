@@ -522,6 +522,10 @@ input[readonly] {
     border-bottom: 1px solid #888;
 }
 
+.note-editor .modal-body {
+    padding: 30px;
+}
+
 /* Vertical Offset Bottom */
 .vert-offset-top-12 { margin-top: 12em; }
 

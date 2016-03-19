@@ -37,7 +37,7 @@ class UthandoFormElement extends AbstractHelper
      * @param array $options
      * @return string
      */
-    public function __invoke(array $options = []) : string
+    public function __invoke(array $options = [])
     {
         $options            = array_merge($this->options, $options);
         $view               = $this->getView();
@@ -48,7 +48,7 @@ class UthandoFormElement extends AbstractHelper
         /* @var Partial $partialHelper */
         $partialHelper      = $view->plugin('partial');
         $html               = '';
-        $formElements       = ($view->get('formElements')) ?? [];
+        $formElements       = ($view->get('formElements')) ?: [];
         
         foreach ($formElements as $element) {
             switch ($form->get($element)->getAttribute('type')) {

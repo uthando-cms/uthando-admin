@@ -22,7 +22,7 @@ class IndexController extends AbstractActionController
     /**
      * @return array
      */
-    public function indexAction() : array
+    public function indexAction()
     {
         return [];
     }

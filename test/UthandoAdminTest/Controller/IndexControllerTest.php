@@ -65,4 +65,12 @@ class IndexControllerTest extends TestCase
         $this->assertResponseStatusCode(302);
         $this->assertRedirectTo('/');
     }
+
+    public function testGuestRedirectsToLogin()
+    {
+        $this->dispatch('/admin');
+
+        $this->assertResponseStatusCode(302);
+        $this->assertRedirectTo('/user/');
+    }
 }

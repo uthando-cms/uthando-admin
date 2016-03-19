@@ -22,7 +22,7 @@ class PhpInfo extends AbstractHelper
     /**
      * @return mixed|string
      */
-    public function __invoke() : string
+    public function __invoke()
     {
         ob_start();
         phpinfo();

@@ -22,7 +22,7 @@ class AdminNavigationFactory extends AbstractNavigationFactory
     /**
      * @return string
      */
-    protected function getName() : string
+    protected function getName()
     {
         return 'admin';
     }

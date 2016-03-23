@@ -100,7 +100,7 @@
     ->appendFile($this->basePath('js/uthando-admin.js')); ?>
 
 <script>
-    admin.basePath('<?=$this->basePath();?>');
+    admin.basePath = '<?=$this->basePath();?>';
 </script>
 
 </body>

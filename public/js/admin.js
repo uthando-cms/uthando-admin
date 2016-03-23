@@ -1,5 +1,7 @@
 
 var admin = {
+    basePath : '/',
+    
     addAlert : function(message, type)
     {
         $('#alerts').append(

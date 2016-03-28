@@ -22,7 +22,15 @@
             $html .= '</li>';
         }
 
-        if($hasChildren) {
+        $children = $page->getChildren();
+
+        if ($children) {
+            $childrenVisible = $children->getVisible(true);
+        } else {
+            $childrenVisible = null;
+        }
+
+        if($hasChildren && $childrenVisible) {
             $html .= '<li id="' . strtolower($page->getLabel()) . '">';
             $html .= '<a class="parent">';
 

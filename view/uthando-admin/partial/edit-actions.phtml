@@ -32,7 +32,7 @@
             ])) ?>">
             <div class="modal-body">
                 <p><?=$this->translate('Are you sure you want to delete this');?> <?=$this->tableName;?>.</p>
-                <p class="label label-important"><?=$this->translate('This action cannot be undone');?></p>
+                <h4 class="text-danger"><?=$this->translate('This action cannot be undone');?></h4>
             </div>
             <input type="hidden" name="<?=$this->pk;?>" value="<?=$this->id;?>">
             <div class="modal-footer">

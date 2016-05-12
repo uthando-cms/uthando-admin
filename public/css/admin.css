@@ -516,6 +516,11 @@ input[readonly] {
     cursor: text !important;
 }
 
+.form-group.has-error ul {
+    padding: 0;
+    list-style: none;
+}
+
 /* code mirror */
 .CodeMirror {
     border-top: 1px solid #888;

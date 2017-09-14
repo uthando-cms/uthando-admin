@@ -1,0 +1,18 @@
+
+<?php $this->inlineScript()->captureStart();?>
+$('textarea.editable-textarea').summernote({
+        height: 300,
+        tabsize: 4,
+        prettifyHtml:false,
+        toolbar: [
+            ['style', ['style', 'bold', 'underline', 'clear']],
+            ['font', ['fontname', 'fontsize']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'elfinder']],
+            ['view', ['fullscreen', 'codeview', 'help']],
+        ]
+});
+<?php $this->inlineScript()->captureEnd();?>
+
+<?=$this->fileManager()->summernote();?>

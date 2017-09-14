@@ -1,5 +1,7 @@
 <?php
 
+use UthandoAdmin\View\TextEditor;
+
 return [
     'asset_manager' => [
         'resolver_configs' => [
@@ -28,22 +30,6 @@ return [
                 'UthandoAdmin' => __DIR__ . '/../public',
             ],
         ],
-        'filters' => [
-            'js' => [
-                ['filter' => \Assetic\Filter\JSMinFilter::class],
-            ],
-            'css' => [
-                //['filter' => \Assetic\Filter\CssMinFilter::class],
-            ],
-        ],
-        'caching' => [
-            'default' => [
-                'cache' => \AssetManager\Cache\FilePathCache::class,
-                'options' => [
-                    'dir' => 'public',
-                ],
-            ],
-        ],
     ],
     'controllers' => [
         'invokables' => [
@@ -59,6 +45,7 @@ return [
         'invokables' => [
             'PhpInfo' => 'UthandoAdmin\View\PhpInfo',
             'UthandoFormElement' => 'UthandoAdmin\View\UthandoFormElement',
+            'TextEditor' => TextEditor::class,
         ],
     ],
     'view_manager' => [

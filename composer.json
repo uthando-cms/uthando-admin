@@ -19,12 +19,13 @@
     }
   ],
   "require": {
-    "php": ">=5.5",
+    "php": ">=7.0",
     "uthando-cms/uthando-common": "2.*",
     "uthando-cms/uthando-navigation": "2.*",
     "uthando-cms/uthando-user": "2.*",
     "uthando-cms/uthando-file-manager": "2.*",
-    "rwoverdijk/assetmanager": "1.*"
+    "rwoverdijk/assetmanager": "1.*",
+    "summernote/summernote": "*"
   },
   "autoload": {
     "psr-0": {

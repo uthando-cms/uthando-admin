@@ -11,27 +11,39 @@ return [
                     'js/jquery.ajaxWidgetPanel.js',
                     'js/bootbox.min.js',
                 ],
+                'js/summernote.js' => [
+                    'summernote.js',
+                ],
                 'css/uthando-admin.css' => [
                     'css/admin.css',
                 ],
+            ],
+            'map' => [
+                'summernote.js' => 'https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js',
+                'css/summernote.css' => 'https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css',
+                'css/font/summernote.ttf' => 'https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/font/summernote.ttf',
+                'css/font/summernote.woff' => 'https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/font/summernote.woff',
             ],
             'paths' => [
                 'UthandoAdmin' => __DIR__ . '/../public',
             ],
         ],
+        'filters' => [
+            'js' => [
+                ['filter' => \Assetic\Filter\JSMinFilter::class],
+            ],
+            'css' => [
+                //['filter' => \Assetic\Filter\CssMinFilter::class],
+            ],
+        ],
         'caching' => [
             'default' => [
-                'cache' => 'FilesystemCache',
+                'cache' => \AssetManager\Cache\FilePathCache::class,
                 'options' => [
-                    'dir' => 'data/cache', // path/to/cache
+                    'dir' => 'public',
                 ],
             ],
         ],
-        /*'filters' => [
-            'js' => [
-                ['filter' => 'Assetic\Filter\JSMinFilter'],
-            ],
-        ],*/
     ],
     'controllers' => [
         'invokables' => [

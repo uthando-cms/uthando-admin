@@ -10,15 +10,14 @@
         ->appendName('viewport', 'width=device-width, initial-scale=1.0')
         ->appendName('rating', 'general'); ?>
 
-    <!-- Styles -->
-    <?= $this->headLink()
-        ->appendStylesheet('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.11.0/codemirror.css')
-        ->appendStylesheet('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.11.0/addon/hint/show-hint.css')
-        ->appendStylesheet('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.11.0/theme/monokai.css')
-        ->appendStylesheet('//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css')
+    <?=$this->headLink()
+        //->appendStylesheet('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/codemirror.css')
+        //->appendStylesheet('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/addon/hint/show-hint.css')
+        //->appendStylesheet('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/theme/monokai.css')
+        ->appendStylesheet($this->basePath('css/summernote.css'))
         ->appendStylesheet($this->basePath('css/uthando-admin.css'))
-        ->appendStylesheet('//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.45/css/bootstrap-datetimepicker.min.css');
-    ?>
+        //->appendStylesheet('//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.45/css/bootstrap-datetimepicker.min.css')
+    ; ?>
 
     <!-- Scripts -->
     <?= $this->headScript(); ?>
@@ -84,18 +83,20 @@
 </div>
 
 <?= $this->inlineScript()
-    ->appendFile('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.11.0/codemirror.js')
-    ->appendFile('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.11.0/addon/hint/show-hint.js')
-    ->appendFile('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.11.0/addon/hint/xml-hint.js')
-    ->appendFile('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.11.0/addon/hint/html-hint.js')
-    ->appendFile('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.11.0/mode/xml/xml.js')
-    ->appendFile('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.11.0/mode/javascript/javascript.js')
-    ->appendFile('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.11.0/mode/css/css.js')
-    ->appendFile('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.11.0/mode/htmlmixed/htmlmixed.js')
-    ->appendFile('//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js')
-    ->appendFile('//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js')
-    ->appendFile('//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.45/js/bootstrap-datetimepicker.min.js')
-    ->appendFile($this->basePath('js/uthando-admin.js')); ?>
+    ->prependFile($this->basePath('js/uthando-admin.js'))
+    //->prependFile('//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.45/js/bootstrap-datetimepicker.min.js')
+    //->prependFile('//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js')
+    //->prependFile($this->basePath('js/summernote-ext-highlight.js')
+    ->prependFile($this->basePath('js/summernote.js'))
+    //->prependFile('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/mode/htmlmixed/htmlmixed.js')
+    //->prependFile('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/mode/css/css.js')
+    //->prependFile('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/mode/javascript/javascript.js')
+    //->prependFile('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/mode/xml/xml.js')
+    //->prependFile('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/addon/hint/html-hint.js')
+    //->prependFile('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/addon/hint/xml-hint.js')
+    //->prependFile('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/addon/hint/show-hint.js')
+    //->prependFile('//cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/codemirror.js')
+; ?>
 
 <script>
     admin.basePath = '<?=$this->basePath();?>';
@@ -103,4 +104,3 @@
 
 </body>
 </html>
-

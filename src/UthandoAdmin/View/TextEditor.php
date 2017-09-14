@@ -16,7 +16,12 @@ class TextEditor extends AbstractViewHelper
 {
     public function summernote()
     {
-        return $this->getView()->partial(
+        $view = $this->getView();
+
+        $view->headLink()->prependStylesheet($view->basePath('css/summernote.css'));
+        $view->inlineScript()->appendFile($view->basePath('js/summernote.js'));
+
+        return $view->partial(
             'uthando-admin/partial/summernote'
         );
     }

@@ -27,8 +27,7 @@ return [
                 'css/codemirror.css' => [
                     'codemirror.css',
                     'css/show-hint.css',
-                    'css/monokai.css'
-
+                    'css/monokai.css',
                 ],
                 'js/codemirror.js' => [
                     'codemirror.js',

@@ -1,8 +1,6 @@
 /*!
- * Summernote Syntax Highlighting
- * http://epiksel.github.io/summernote-ext-highlight/
- * http://e-piksel.com
- * Original Author: http://www.hyl.pw/
+ * summernote highlight plugin
+ * http://www.hyl.pw/
  *
  * Released under the MIT license
  */
@@ -36,7 +34,6 @@
             var options = context.options;
             var lang = options.langInfo;
 
-
             // add button
 
             context.memo('button.highlight', function () {
@@ -60,13 +57,12 @@
                 var $selectGroup = $('<div class="form-group" />');
                 var $textGroup = $('<div class="form-group" />');
                 var $select = $('<select class="form-control ext-highlight-select" />');
+                var $checkboxGroup = $('<div class="checkbox ext-highlight-checkbox" />');
 
                 var languages = [
-                    'css', 'htm', 'html', 'php', 'java', 'js', 'xml', 'sql', 'py', 'rb', // popular lang
-                    'apoll', 'basic', 'clj', 'coffee', 'dart', 'erlan', 'go', 'hs',
-                    'lasso', 'lisp', 'llvm', 'logta', 'lua', 'matla', 'ml', 'mumps', 'n',
-                    'pasca', 'perl', 'proto', 'r', 'rd', 'rust', 'scala', 'swift',
-                    'tcl', 'tex', 'vb', 'vhdl', 'wiki', 'xhtml', 'xq', 'yaml'
+                    'bsh', 'c', 'cc', 'cpp', 'cs', 'csh', 'cyc', 'cv', 'htm', 'html',
+                    'java', 'js', 'm', 'mxml', 'perl', 'pl', 'pm', 'py', 'php', 'rb',
+                    'sh', 'xhtml', 'xml', 'xsl'
                 ];
 
                 for (var i = 0; i < languages.length; i++) {
@@ -85,18 +81,31 @@
                 $box.append($textGroup.append($label));
                 $box.append($textGroup.append($textarea));
 
+                var $label = $('<label />');
+                var $checkbox = $('<input type="checkbox" class="ext-highlight-linenums" />');
+                $label.html(' line numbers');
+                $label.prepend($checkbox);
+                $box.append($checkboxGroup.append($label))
+
                 return $box.html();
             };
 
             this.createCodeNode = function (code, select) {
+                var $extHighlightSelect = self.$dialog.find('.ext-highlight-select');
+                var $extLineNumsCheckbox = self.$dialog.find('.ext-highlight-linenums');
+
                 var $code = $('<code>');
-                $code.html(code.replace(/</g,"&lt;").replace(/>/g,"&gt;"));
-                $code.addClass('language-' + select);
+                $code.html(code);
+                $code.addClass('language-' + $extHighlightSelect.val());
 
                 var $pre = $('<pre>');
                 $pre.html($code)
-                $pre.addClass('prettyprint').addClass('linenums');
-                console.log($pre[0])
+                $pre.addClass('prettyprint');
+
+                if ($extLineNumsCheckbox.is(':checked')) {
+                    $pre.addClass('linenums');
+                }
+
                 return $pre[0];
             };
 
@@ -104,33 +113,31 @@
                 return $.Deferred(function (deferred) {
                     var $extHighlightCode = self.$dialog.find('.ext-highlight-code');
                     var $extHighlightBtn = self.$dialog.find('.ext-highlight-btn');
-                    var $extHighlightSelect = self.$dialog.find('.ext-highlight-select');
 
                     ui.onDialogShown(self.$dialog, function () {
-                        context.triggerEvent('dialog.shown');
 
                         $extHighlightCode.val(codeInfo);
 
                         $extHighlightCode.on('input', function () {
                             ui.toggleBtn($extHighlightBtn, $extHighlightCode.val() != '');
-
                             codeInfo = $extHighlightCode.val();
                         });
 
                         $extHighlightBtn.one('click', function (event) {
                             event.preventDefault();
-                            context.invoke('editor.insertNode', self.createCodeNode(codeInfo, $extHighlightSelect.val()));
-
-                            self.$dialog.modal('hide');
+                            deferred.resolve(self.createCodeNode($extHighlightCode.val()));
                         });
                     });
 
                     ui.onDialogHidden(self.$dialog, function () {
-                        context.triggerEvent('dialog.shown');
-                        deferred.resolve();
+                        $extHighlightBtn.off('click');
+                        if (deferred.state() === 'pending') {
+                            deferred.reject();
+                        }
                     });
+
                     ui.showDialog(self.$dialog);
-                }).promise();
+                });
             };
 
             this.getCodeInfo = function () {
@@ -140,10 +147,14 @@
 
             this.show = function () {
                 var codeInfo = self.getCodeInfo();
-
                 context.invoke('editor.saveRange');
                 this.showHighlightDialog(codeInfo).then(function (codeInfo) {
+                    self.$dialog.modal('hide');
                     context.invoke('editor.restoreRange');
+
+                    if (codeInfo) {
+                        context.invoke('editor.insertNode', codeInfo);
+                    }
                 });
             };
 

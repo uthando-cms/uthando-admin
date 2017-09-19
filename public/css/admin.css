@@ -232,21 +232,21 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 /* Menu */
-#menu, #menu ul, #menu li {
+.menu, .menu ul, .menu li {
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
-#menu {
+.menu {
     margin-bottom: 25px;
 }
 
-#menu > li {
+.menu > li {
     position: relative;
 }
 
-#menu li a {
+.menu li a {
     text-decoration: none;
     display: block;
     padding: 10px;
@@ -254,36 +254,36 @@ h1, h2, h3, h4, h5, h6, p {
     border-bottom: 1px solid #515151;
 }
 
-#menu li a i {
+.menu li a i {
     font-size: 16px;
 }
 
-#menu > li > a {
+.menu > li > a {
     color: #C4C4C4;
     font-size: 14px;
     padding-left: 13px;
     border-bottom: 1px solid #585858;
 }
 
-#menu > li > a:hover {
+.menu > li > a:hover {
     background-color: #444444;
 }
 
-#menu > li > a > span {
+.menu > li > a > span {
     display: none;
     margin-left: 8px;
 }
 
-#menu li li a {
+.menu li li a {
     color: #9d9d9d;
 }
 
-#menu li li a:hover {
+.menu li li a:hover {
     color: #FFFFFF;
     background-color: #373737;
 }
 
-#menu li li a:before {
+.menu li li a:before {
     content: "\f101";
     font-size: 14px;
     font-family: FontAwesome, serif;
@@ -292,29 +292,29 @@ h1, h2, h3, h4, h5, h6, p {
     transition: margin ease 0.5s;
 }
 
-#menu li li a:hover:before {
+.menu li li a:hover:before {
     margin-right: 20px;
 }
 
-#menu > li.active > a {
+.menu > li.active > a {
     color: #DDDDDD;
     background: #373737;
 }
 
-#menu li.active li a {
+.menu li.active li a {
     color: #C4C4C4;
 }
 
-#menu li li.active > a:last-child {
+.menu li li.active > a:last-child {
     color: #FFFFFF;
 }
 
-#menu li li.active a:last-child:before {
+.menu li li.active a:last-child:before {
     margin-left: 20px;
     margin-right: 10px;
 }
 
-#menu > li > ul {
+.menu > li > ul {
     position: absolute;
     left: 50px;
     top: 0;
@@ -323,43 +323,43 @@ h1, h2, h3, h4, h5, h6, p {
     visibility: hidden;
 }
 
-#menu li ul {
+.menu li ul {
     overflow: hidden;
 }
 
-#menu > li:hover > ul {
+.menu > li:hover > ul {
     visibility: visible;
 }
 
-#menu li li a.parent:after,
-#column-left.active #menu > li a.parent:after {
+.menu li li a.parent:after,
+#column-left.active .menu > li a.parent:after {
     font-family: FontAwesome, serif;
     content: "\f105";
     float: right;
     margin-right: 8px;
 }
 
-#menu li li.open > a.parent:after,
-#column-left.active #menu > li.open > a.parent:after {
+.menu li li.open > a.parent:after,
+#column-left.active .menu > li.open > a.parent:after {
     font-family: FontAwesome, serif;
     content: "\f107";
     float: right;
     margin-right: 8px;
 }
 
-#menu li ul a {
+.menu li ul a {
     padding-left: 20px;
 }
 
-#menu li li ul a {
+.menu li li ul a {
     padding-left: 40px;
 }
 
-#menu li li li ul a {
+.menu li li li ul a {
     padding-left: 60px;
 }
 
-#menu li li li li ul a {
+.menu li li li li ul a {
     padding-left: 80px;
 }
 
@@ -393,15 +393,15 @@ h1, h2, h3, h4, h5, h6, p {
     width: 235px;
 }
 
-#column-left.active #menu li i {
+#column-left.active .menu li i {
     font-size: 14px;
 }
 
-#column-left.active #menu > li > a > span {
+#column-left.active .menu > li > a > span {
     display: inline;
 }
 
-#column-left.active #menu > li > ul {
+#column-left.active .menu > li > ul {
     position: relative;
     left: auto;
     top: auto;

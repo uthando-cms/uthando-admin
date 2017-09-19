@@ -11,5 +11,4 @@ return [
     'uthando-admin/partial/edit-actions' => __DIR__ . '/./view/uthando-admin/partial/edit-actions.phtml',
     'uthando-admin/partial/side-bar' => __DIR__ . '/./view/uthando-admin/partial/side-bar.phtml',
     'uthando-admin/partial/code-mirror' => __DIR__ . '/./view/uthando-admin/partial/code-mirror.phtml',
-    'layout/layout' => __DIR__ . '/./view/uthando-admin/layout/layout.phtml',
 ];

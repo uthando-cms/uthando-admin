@@ -119,14 +119,6 @@ return [
             ],
         ],
         'admin' => [
-            'home' => [
-                'params' => [
-                    'icon' => 'fa-home',
-                ],
-                'label' => 'Home',
-                'route' => 'home',
-                'resource' => 'menu:admin',
-            ],
             'admin' => [
                 'label' => 'Admin',
                 'params' => [

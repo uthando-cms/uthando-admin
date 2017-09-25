@@ -25,7 +25,7 @@ class PhpInfo extends AbstractHelper
     public function __invoke()
     {
         ob_start();
-        phpinfo();
+        phpinfo(INFO_MODULES);
         $phpInfo = ob_get_contents();
         ob_end_clean();
 

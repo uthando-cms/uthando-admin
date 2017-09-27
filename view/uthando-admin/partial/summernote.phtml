@@ -1,19 +1,21 @@
 
 <?=$this->headLink();?>
 <?php $this->inlineScript()->captureStart();?>
-$('textarea.editable-textarea').summernote({
-        height: 300,
-        tabsize: 4,
-        prettifyHtml:false,
-        toolbar: [
-            ['style', ['style', 'bold', 'underline', 'clear']],
-            ['font', ['fontname', 'fontsize']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', 'video', 'elfinder', 'highlight']],
-            ['view', ['fullscreen', 'codeview', 'help']],
-        ]
-});
+
+var summernoteOptions = {
+    height: 300,
+    tabsize: 4,
+    prettifyHtml:false,
+    toolbar: [
+        ['style', ['style', 'bold', 'underline', 'clear']],
+        ['font', ['fontname', 'fontsize']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['table', ['table']],
+        ['insert', ['link', 'video', 'elfinder', 'highlight']],
+        ['view', ['fullscreen', 'codeview', 'help']],
+    ]
+};
+$('textarea.editable-textarea').summernote(summernoteOptions);
 <?php $this->inlineScript()->captureEnd();?>
 
 <?=$this->fileManager()->summernote();?>

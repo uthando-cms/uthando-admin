@@ -17,6 +17,7 @@ return [
                 'js/summernote.js' => [
                     'summernote.js',
                     'js/summernote-ext-highlight.js',
+                    'js/summernote-ext-bootstrap.js',
                 ],
                 'css/uthando-admin.css' => [
                     'css/admin.css',

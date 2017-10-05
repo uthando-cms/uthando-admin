@@ -7,13 +7,17 @@ var summernoteOptions = {
     tabsize: 4,
     prettifyHtml:false,
     toolbar: [
-        ['style', ['style', 'bold', 'underline', 'clear']],
-        ['font', ['fontname', 'fontsize']],
-        ['para', ['ul', 'ol', 'paragraph']],
+        ['style', ['style', 'bold', 'italic', 'strikethrough', 'underline']],
+        ['bootstrap', ['bootstrap-helper', 'bootstrap-code', 'bootstrap-inline', 'bootstrap-class-styles']],
+        ['edit', ['clear', 'redo', 'undo']],
+        ['font', ['fontname', 'fontsize', 'superscript', 'subscript', 'height']],
+        ['para', ['ul', 'ol', 'paragraph', 'hr']],
         ['table', ['table']],
         ['insert', ['link', 'video', 'elfinder', 'highlight']],
         ['view', ['fullscreen', 'codeview', 'help']],
-    ]
+    ],
+    styleTags: ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+
 };
 $('textarea.editable-textarea').summernote(summernoteOptions);
 <?php $this->inlineScript()->captureEnd();?>

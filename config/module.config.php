@@ -21,6 +21,7 @@ return [
                 ],
                 'css/uthando-admin.css' => [
                     'css/admin.css',
+                    'css/summernote-ext-bootstrap.css',
                 ],
                 'js/bootstrap-datetimepicker.js' => [
                     'moment.js',

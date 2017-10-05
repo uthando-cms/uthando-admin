@@ -113,6 +113,13 @@
                         contents:
                         '<div class="list-group" style="margin: 0px; height: auto; max-height: 200px; min-width: 200px; max-width:300px; overflow-x: hidden;">' +
                         '<a href="#" data-trigger="styleBlock" class="list-group-item"><span class="lead">Lead</span></a>' +
+
+                        '<a href="#" data-trigger="styleBlock" class="list-group-item"><span class="text-left">Left aligned text</span></a>' +
+                        '<a href="#" data-trigger="styleBlock" class="list-group-item"><span class="text-center">Center aligned text</span></a>' +
+                        '<a href="#" data-trigger="styleBlock" class="list-group-item"><span class="text-right">Right aligned text</span></a>' +
+                        '<a href="#" data-trigger="styleBlock" class="list-group-item"><span class="text-justify">Justified text</span></a>' +
+                        '<a href="#" data-trigger="styleBlock" class="list-group-item"><span class="text-nowrap">No wrap text</span></a>' +
+
                         '<a href="#" data-trigger="formatSpan" class="list-group-item"><span class="text-uppercase">Text Uppercased</span></a>' +
                         '<a href="#" data-trigger="formatSpan" class="list-group-item"><span class="text-lowercase">Text Lowercased</span></a>' +
                         '<a href="#" data-trigger="formatSpan" class="list-group-item"><span class="text-capitalize">Text Capitalized</span></a>' +
@@ -149,7 +156,7 @@
                     ui.button({
                         className: 'dropdown-toggle bootstrap-inline',
                         contents: '<b><i class="fa fa-html5"> B</i></b> ' + ui.icon(options.icons.caret, 'i'),
-                        tooltip: 'Bootstrap Inline Styles',
+                        tooltip: 'Bootstrap Inline Tags',
                         data: {
                             toggle: 'dropdown'
                         }
@@ -168,7 +175,7 @@
                     ui.button({
                         className: 'dropdown-toggle bootstrap-code',
                         contents: '<b><i class="fa fa-code"> B</i></b> ' + ui.icon(options.icons.caret, 'i'),
-                        tooltip: 'Bootstrap Code Styles',
+                        tooltip: 'Bootstrap Code Tags',
                         data: {
                             toggle: 'dropdown'
                         }
@@ -187,7 +194,7 @@
                     ui.button({
                         className: 'dropdown-toggle bootstrap-classes',
                         contents: '<b><i class="fa fa-css3"> B</i></b> ' + ui.icon(options.icons.caret, 'i'),
-                        tooltip: 'Bootstrap Class Styles',
+                        tooltip: 'Bootstrap Element Styles',
                         data: {
                             toggle: 'dropdown'
                         }
@@ -198,11 +205,6 @@
                         '<div class="list-group" style="margin: 0px; height: auto; max-height: 200px; min-width: 200px; max-width:300px; overflow-x: hidden;">' +
                         '<a href="#" data-trigger="styleBlock" class="list-group-item"><span class="pre-scrollable">Pre scrollable</span></a>' +
                         '<a href="#" data-trigger="styleBlockquote" class="list-group-item"><span class="blockquote-reverse">Blockquote reverse</span></a>' +
-                        '<a href="#" data-trigger="styleBlock" class="list-group-item"><span class="text-left">Left aligned text</span></a>' +
-                        '<a href="#" data-trigger="styleBlock" class="list-group-item"><span class="text-center">Center aligned text</span></a>' +
-                        '<a href="#" data-trigger="styleBlock" class="list-group-item"><span class="text-right">Right aligned text</span></a>' +
-                        '<a href="#" data-trigger="styleBlock" class="list-group-item"><span class="text-justify">Justified text</span></a>' +
-                        '<a href="#" data-trigger="styleBlock" class="list-group-item"><span class="text-nowrap">No wrap text</span></a>' +
                         '</div>',
                         callback: function($dropdown) {
                             $dropdown.find('a').each(function () {

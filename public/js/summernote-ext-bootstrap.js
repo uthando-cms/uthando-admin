@@ -205,6 +205,7 @@
                         '<div class="list-group" style="margin: 0px; height: auto; max-height: 200px; min-width: 200px; max-width:300px; overflow-x: hidden;">' +
                         '<a href="#" data-trigger="styleBlock" class="list-group-item"><span class="pre-scrollable">Pre scrollable</span></a>' +
                         '<a href="#" data-trigger="styleBlockquote" class="list-group-item"><span class="blockquote-reverse">Blockquote reverse</span></a>' +
+                        '<a href="#" data-trigger="styleTarget" class="list-group-item"><span class="img-responsive">Image responsive</span></a>' +
                         '</div>',
                         callback: function($dropdown) {
                             $dropdown.find('a').each(function () {
@@ -232,6 +233,21 @@
                 }
 
                 this.detach(obj);
+            };
+
+            this.styleTarget = function(classType) {
+
+                var target = $(context.invoke('editor.restoreTarget'));
+
+                if (target.hasClass(classType)) {
+                    target.removeClass(classType);
+                } else {
+                    target.addClass(classType);
+                }
+
+                console.log(target)
+
+                context.invoke('editor.afterCommand');
             };
 
             this.styleBlock = function (classType) {

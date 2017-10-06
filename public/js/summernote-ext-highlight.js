@@ -99,7 +99,7 @@
                 $code.addClass('language-' + $extHighlightSelect.val());
 
                 var $pre = $('<pre>');
-                $pre.html($code.replace(/</g,"&lt;").replace(/>/g,"&gt;"));
+                $pre.html(code.replace(/</g,"&lt;").replace(/>/g,"&gt;"));
                 $pre.addClass('prettyprint');
 
                 if ($extLineNumsCheckbox.is(':checked')) {

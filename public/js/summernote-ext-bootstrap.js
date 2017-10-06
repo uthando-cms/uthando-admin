@@ -18,14 +18,6 @@
     }
 }(function ($) {
 
-    /*$.extend($.summernote.options, {
-        callbacks: {
-            onChange: function(e) {
-
-            }
-        }
-    });*/
-
     // Extends plugins for adding bootstrap.
     //  - plugin is external module for customizing.
     $.extend($.summernote.plugins, {
@@ -42,61 +34,20 @@
             var dom = $.summernote.dom;
             var options = context.options;
 
-            var del = ui.button({
-                contents: '<del>D</del>',
-                tooltip: 'Deleted text <del>',
-                className: 'note-text-tags-btn',
-                click: context.createInvokeHandler('bootstrap.formatInline', 'del')
-            });
+            this.generateButton = function (tagList) {
+                var returnArray = [];
 
-            var ins = ui.button({
-                contents: '<ins>I</ins>',
-                tooltip: 'Inserted text <ins>',
-                className: 'note-text-tags-btn',
-                click: context.createInvokeHandler('bootstrap.formatInline', 'ins')
-            });
+                $.each(tagList, function (index, tag) {
+                    returnArray[index] = ui.button({
+                        contents: '<' + tag[0] + '>' + tag[0].charAt(0).toUpperCase() +'</' + tag[0] + '>',
+                        tooltip: tag[1] + ' <' + tag[0] + '>',
+                        className: 'note-text-tags-btn',
+                        click: context.createInvokeHandler('bootstrap.formatInline', tag[0])
+                    });
+                });
 
-            var small = ui.button({
-                contents: '<small>S</small>',
-                tooltip: 'Small text <small>',
-                className: 'note-text-tags-btn',
-                click: context.createInvokeHandler('bootstrap.formatInline', 'small')
-            });
-
-            var mark = ui.button({
-                contents: '<mark>M</mark>',
-                tooltip: 'Highlighted text <mark>',
-                className: 'note-text-tags-btn',
-                click: context.createInvokeHandler('bootstrap.formatInline', 'mark')
-            });
-
-            var code = ui.button({
-                contents: '<code>C</code>',
-                tooltip: 'Inline code <code>',
-                className: 'note-text-tags-btn',
-                click: context.createInvokeHandler('bootstrap.formatInline', 'code')
-            });
-
-            var kbd = ui.button({
-                contents: '<kbd>K</kbd>',
-                tooltip: 'User input <kbd>',
-                className: 'note-text-tags-btn',
-                click: context.createInvokeHandler('bootstrap.formatInline', 'kbd')
-            });
-
-            var variable = ui.button({
-                contents: '<var>V</var>',
-                tooltip: 'Variable <var>',
-                className: 'note-text-tags-btn',
-                click: context.createInvokeHandler('bootstrap.formatInline', 'var')
-            });
-
-            var samp = ui.button({
-                contents: '<samp>S</samp>',
-                tooltip: 'Sample <samp>',
-                className: 'note-text-tags-btn',
-                click: context.createInvokeHandler('bootstrap.formatInline', 'samp')
-            });
+                return returnArray;
+            };
 
             context.memo('button.bootstrap-helper', function () {
                 return ui.buttonGroup([
@@ -164,9 +115,14 @@
                     ui.dropdown([
                         ui.buttonGroup({
                             className: 'note-bootstrap-inline',
-                            children: [del, ins, small, mark]
-                        }),
-                    ]),
+                            children: self.generateButton([
+                                ['del', 'Deleted text'],
+                                ['ins', 'Inserted text'],
+                                ['small', 'Small text'],
+                                ['mark', 'Highlighted text']
+                            ])
+                        })
+                    ])
                 ]).render();
             });
 
@@ -183,9 +139,14 @@
                     ui.dropdown([
                         ui.buttonGroup({
                             className: 'note-bootstrap-code',
-                            children: [code, kbd, variable, samp]
-                        }),
-                    ]),
+                            children: self.generateButton([
+                                ['code', 'Inline code'],
+                                ['kbd', 'User input'],
+                                ['var', 'Variable'],
+                                ['samp', 'Sample']
+                            ])
+                        })
+                    ])
                 ]).render();
             });
 
@@ -202,7 +163,7 @@
                     ui.dropdown({
                         className: 'dropdown-style scrollable-menu',
                         contents:
-                        '<div class="list-group" style="margin: 0px; height: auto; max-height: 200px; min-width: 200px; max-width:300px; overflow-x: hidden;">' +
+                        '<div class="list-group" style="margin: 0; height: auto; max-height: 200px; min-width: 200px; max-width:300px; overflow-x: hidden;">' +
                         '<a href="#" data-trigger="styleBlock" class="list-group-item"><span class="pre-scrollable">Pre scrollable</span></a>' +
                         '<a href="#" data-trigger="styleBlockquote" class="list-group-item"><span class="blockquote-reverse">Blockquote reverse</span></a>' +
                         '<a href="#" data-trigger="styleImg" class="list-group-item"><span class="img-responsive">Image responsive</span></a>' +
@@ -321,7 +282,6 @@
             this.detach = function(obj) {
                 obj.range.collapse(false);
                 obj.range.detach();
-
                 context.invoke('editor.afterCommand');
             };
 

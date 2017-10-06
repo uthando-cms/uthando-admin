@@ -167,6 +167,10 @@
                         '<a href="#" data-trigger="styleBlock" class="list-group-item"><span class="pre-scrollable">Pre scrollable</span></a>' +
                         '<a href="#" data-trigger="styleBlockquote" class="list-group-item"><span class="blockquote-reverse">Blockquote reverse</span></a>' +
                         '<a href="#" data-trigger="styleImg" class="list-group-item"><span class="img-responsive">Image responsive</span></a>' +
+                        '<a href="#" data-trigger="styleAlert" class="list-group-item"><span class="alert-success">Alert success</span></a>' +
+                        '<a href="#" data-trigger="styleAlert" class="list-group-item"><span class="alert-info">Alert info</span></a>' +
+                        '<a href="#" data-trigger="styleAlert" class="list-group-item"><span class="alert-warning">Alert warning</span></a>' +
+                        '<a href="#" data-trigger="styleAlert" class="list-group-item"><span class="alert-danger">Alert danger</span></a>' +
                         '</div>',
                         callback: function($dropdown) {
                             $dropdown.find('a').each(function () {
@@ -181,6 +185,24 @@
                     })
                 ]).render();
             });
+
+            this.styleAlert = function (classType) {
+                var obj = this.getSelectionObject();
+
+                if (obj.parentNode.parent().is('div.alert')) {
+                    if (obj.parentNode.parent().is('div.' + classType)) {
+                        obj.node.unwrap();
+                    } else {
+                        obj.parentNode.parent.attr('class', 'alert ' + classType);
+                    }
+
+                } else {
+                    node = $('<div>').attr('class', 'alert ' + classType);
+                    obj.parentNode.wrap(node[0]);
+                }
+
+                this.detach(obj);
+            }
 
             this.styleBlockquote = function(classType) {
                 var obj = this.getSelectionObject();

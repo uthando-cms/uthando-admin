@@ -202,7 +202,7 @@
                 }
 
                 this.detach(obj);
-            }
+            };
 
             this.styleBlockquote = function(classType) {
                 var obj = this.getSelectionObject();

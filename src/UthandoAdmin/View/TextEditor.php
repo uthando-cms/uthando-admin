@@ -21,21 +21,23 @@ class TextEditor extends AbstractViewHelper
         $view->headLink()->appendStylesheet($view->basePath('css/summernote.css'));
         $view->inlineScript()->appendFile($view->basePath('js/summernote.js'));
 
-        return $view->partial(
-            'uthando-admin/partial/summernote'
+        $view->placeholder('js-scripts')->append(
+            $view->partial(
+                'uthando-admin/partial/summernote'
+            )
         );
     }
 
     public function codeMirror()
     {
         $view = $this->getView();
-        $view->headLink()
-            ->appendStylesheet($view->basePath('css/codemirror.css'));
-        $view->inlineScript()
-            ->appendFile($view->basePath('js/codemirror.js'));
+        $view->headLink()->appendStylesheet($view->basePath('css/codemirror.css'));
+        $view->inlineScript()->appendFile($view->basePath('js/codemirror.js'));
 
-        return $view->partial(
-            'uthando-admin/partial/code-mirror'
+        $view->placeholder('js-scripts')->append(
+            $view->partial(
+                'uthando-admin/partial/code-mirror'
+            )
         );
     }
 }

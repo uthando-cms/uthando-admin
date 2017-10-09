@@ -18,13 +18,13 @@ class DatePicker extends AbstractViewHelper
     {
         $view = $this->getView();
 
-        $view->headLink()
-            ->appendStylesheet($view->basePath('css/bootstrap-datetimepicker.css'));
-        $view->inlineScript()
-            ->appendFile($view->basePath('js/bootstrap-datetimepicker.js'));
-        return $view->partial(
-            'uthando-admin/partial/date-picker', [
-                'date' => $date,
-            ]);
+        $view->headLink()->appendStylesheet($view->basePath('css/bootstrap-datetimepicker.css'));
+        $view->inlineScript()->appendFile($view->basePath('js/bootstrap-datetimepicker.js'));
+        $view->placeholder('js-scripts')->append(
+            $view->partial(
+                'uthando-admin/partial/date-picker', [
+                    'date' => $date,
+                ])
+        );
     }
 }

@@ -310,8 +310,8 @@
             // This methods will be called when editor is destroyed by $('..').summernote('destroy');
             // You should remove elements on `initialize`.
             this.destroy = function () {
-                this.$panel.remove();
-                this.$panel = null;
+                //this.$panel.remove();
+                //this.$panel = null;
             };
         }
     });

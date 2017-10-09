@@ -19,6 +19,16 @@
 
     };
     $('textarea.editable-textarea').summernote(summernoteOptions);
+
+    $('#toggle-summernote').one('click', function (e) {
+
+        if (this.checked === false) {
+            $('textarea.editable-textarea').summernote('destroy');
+        } else {
+            $('textarea.editable-textarea').summernote(summernoteOptions);
+        }
+
+    });
 </script>
 
 <?php $this->fileManager()->summernote();?>

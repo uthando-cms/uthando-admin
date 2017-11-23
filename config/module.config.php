@@ -104,7 +104,6 @@ return [
                         '__NAMESPACE__' => 'UthandoAdmin\Controller',
                         'controller' => 'Index',
                         'action' => 'index',
-                        'force-ssl' => 'ssl',
                         'is-admin' => true,
                     ],
                 ],

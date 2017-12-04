@@ -1,7 +1,9 @@
 <?php
 return [
+    'uthando-admin/index/password' => __DIR__ . '/./view/uthando-admin/index/password.phtml',
     'uthando-admin/index/login' => __DIR__ . '/./view/uthando-admin/index/login.phtml',
     'uthando-admin/index/index' => __DIR__ . '/./view/uthando-admin/index/index.phtml',
+    'uthando-admin/index/profile' => __DIR__ . '/./view/uthando-admin/index/profile.phtml',
     'uthando-admin/index/forgot-password' => __DIR__ . '/./view/uthando-admin/index/forgot-password.phtml',
     'uthando-admin/partial/search' => __DIR__ . '/./view/uthando-admin/partial/search.phtml',
     'uthando-admin/partial/add-edit-form' => __DIR__ . '/./view/uthando-admin/partial/add-edit-form.phtml',

@@ -13,6 +13,8 @@ namespace UthandoAdmin\Controller;
 use UthandoCommon\Service\ServiceTrait;
 use UthandoUser\Form\ForgotPassword;
 use UthandoUser\Form\Login;
+use UthandoUser\Form\Password;
+use UthandoUser\Form\UserEdit;
 use UthandoUser\InputFilter\User as UserInputFilter;
 use UthandoUser\Service\Authentication;
 use UthandoUser\Service\User;
@@ -42,12 +44,87 @@ class IndexController extends AbstractActionController
 
     public function profileAction()
     {
-        return [];
+        /* @var $user \UthandoUser\Model\User */
+        $user = $this->identity();
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $params = $this->params()->fromPost();
+
+            if ($params['userId'] === $user->getUserId()) {
+                $result = $this->getUserService()->editUser($user, $params);
+            } else {
+                // Redirect to user
+                return $this->redirect()->toRoute('admin');
+            }
+
+            if ($result instanceof Form) {
+
+                $this->flashMessenger()->addErrorMessage(
+                    'There were one or more issues with your submission. Please correct them as indicated below.'
+                );
+
+                return new ViewModel([
+                    'form' => $result,
+                    'user' => $user,
+                ]);
+            } else {
+                if ($result) {
+                    $this->flashMessenger()->addSuccessMessage(
+                        'Your changes have been saved.'
+                    );
+
+                    // Redirect to user
+                    return $this->redirect()->toRoute('user');
+
+                } else {
+                    $this->flashMessenger()->addErrorMessage(
+                        'We could not save your changes due to a database error.'
+                    );
+                }
+            }
+        }
+
+        /* @var \UthandoUser\Form\BaseUserEdit $form */
+        $form = $this->getUserService()->getForm(UserEdit::class);
+        $form->bind($user);
+
+        return new ViewModel([
+            'form' => $form
+        ]);
     }
 
-    public function passwordAction()
+    public function passwordAction(): array
     {
-        return [];
+        $request = $this->getRequest();
+        /* @var $user \UthandoUser\Model\User */
+        $user = $this->identity();
+
+        if ($request->isPost()) {
+            $params = $this->params()->fromPost();
+
+            $result = $this->getUserService()->changePassword($params, $user);
+
+            if ($result instanceof Form) {
+                $this->flashMessenger()->addErrorMessage(
+                    'There were one or more issues with your submission. Please correct them as indicated below.'
+                );
+
+                return [
+                    'form' => $result,
+                ];
+            }
+
+            $this->flashMessenger()->addSuccessMessage(
+                'Your new password has been saved.'
+            );
+        }
+
+        $form = $this->getUserService()->getForm(Password::class);
+
+        return [
+            'form' => $form,
+        ];
     }
 
     public function forgotPasswordAction()

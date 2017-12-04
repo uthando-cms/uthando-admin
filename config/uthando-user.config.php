@@ -28,7 +28,9 @@ return [
                         ],
                         'allow' => [
                             'controllers' => [
-                                IndexController::class => ['action' => ['index', 'logout']],
+                                IndexController::class => ['action' => [
+                                    'index', 'logout', 'password', 'profile',
+                                ]],
                             ],
                         ],
                     ],

@@ -1,21 +1,41 @@
 <?php
 
+use UthandoAdmin\Controller\IndexController;
+
 return [
     'uthando_user' => [
         'acl' => [
             'roles' => [
-                'admin' => [
+                'guest' => [
                     'privileges' => [
                         'allow' => [
                             'controllers' => [
-                                'UthandoAdmin\Controller\Index' => ['action' => 'all'],
+                                IndexController::class => ['action' => [
+                                    'login',  'forgot-password',
+                                ]],
+                            ],
+                        ],
+                    ],
+                ],
+                'admin' => [
+                    'privileges' => [
+                        'deny' => [
+                            'controllers' => [
+                                IndexController::class => ['action' => [
+                                    'login', 'forgot-password'
+                                ]],
+                            ],
+                        ],
+                        'allow' => [
+                            'controllers' => [
+                                IndexController::class => ['action' => ['index', 'logout']],
                             ],
                         ],
                     ],
                 ],
             ],
             'resources' => [
-                'UthandoAdmin\Controller\Index',
+                IndexController::class,
             ],
         ],
     ],

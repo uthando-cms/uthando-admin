@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Uthando CMS (http://www.shaunfreeman.co.uk/)
  *
@@ -14,7 +14,7 @@ use UthandoCommon\View\AbstractViewHelper;
 
 class TextEditor extends AbstractViewHelper
 {
-    public function summernote()
+    public function summernote(): void
     {
         $view = $this->getView();
 
@@ -28,7 +28,7 @@ class TextEditor extends AbstractViewHelper
         );
     }
 
-    public function codeMirror()
+    public function codeMirror(): void
     {
         $view = $this->getView();
         $view->headLink()->appendStylesheet($view->basePath('css/codemirror.css'));

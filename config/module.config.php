@@ -1,7 +1,12 @@
 <?php
 
+use UthandoAdmin\Controller\IndexController;
+use UthandoAdmin\Service\AdminNavigationFactory;
+use UthandoAdmin\Service\AdminUserNavigationFactory;
 use UthandoAdmin\View\DatePicker;
+use UthandoAdmin\View\PhpInfo;
 use UthandoAdmin\View\TextEditor;
+use UthandoAdmin\View\UthandoFormElement;
 
 return [
     'asset_manager' => [
@@ -75,20 +80,27 @@ return [
     ],
     'controllers' => [
         'invokables' => [
-            'UthandoAdmin\Controller\Index' => 'UthandoAdmin\Controller\IndexController',
+            IndexController::class => IndexController::class
         ],
     ],
     'service_manager' => [
         'factories' => [
-            'UthandoAdmin\Navigation' => 'UthandoAdmin\Service\AdminNavigationFactory',
+            AdminNavigationFactory::class       => AdminNavigationFactory::class,
+            AdminUserNavigationFactory::class   => AdminUserNavigationFactory::class,
         ],
     ],
     'view_helpers' => [
+        'aliases' => [
+            'phpInfo'               => PhpInfo::class,
+            'uthandoFormElement'    => UthandoFormElement::class,
+            'textEditor'            => TextEditor::class,
+            'datePicker'            => DatePicker::class
+        ],
         'invokables' => [
-            'PhpInfo' => 'UthandoAdmin\View\PhpInfo',
-            'UthandoFormElement' => 'UthandoAdmin\View\UthandoFormElement',
-            'TextEditor' => TextEditor::class,
-            'DatePicker' => DatePicker::class
+            PhpInfo::class              => PhpInfo::class,
+            UthandoFormElement::class   => UthandoFormElement::class,
+            TextEditor::class           => TextEditor::class,
+            DatePicker::class           => DatePicker::class
         ],
     ],
     'view_manager' => [
@@ -102,12 +114,27 @@ return [
                     'route' => '/admin',
                     'defaults' => [
                         '__NAMESPACE__' => 'UthandoAdmin\Controller',
-                        'controller' => 'Index',
+                        'controller' => IndexController::class,
                         'action' => 'index',
                         'is-admin' => true,
                     ],
                 ],
                 'may_terminate' => true,
+                'child_routes' => [
+                    'admin' => [
+                        'type'    => 'Segment',
+                        'options' => [
+                            'route' => '/[:action]',
+                            'constraints'   => [
+                                'action'    => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => [
+                                'controller' => IndexController::class,
+                                'action' => 'index',
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ],
     ],
@@ -139,6 +166,26 @@ return [
                         'resource' => 'menu:admin',
                     ],
                 ],
+            ],
+        ],
+        'admin-user' => [
+            'profile' => [
+                'label' => 'Edit Profile',
+                'route' => 'admin/admin',
+                'action' => 'profile',
+                'resource' => 'menu:admin',
+            ],
+            'password' => [
+                'label' => 'Change Password',
+                'route' => 'admin/admin',
+                'action' => 'password',
+                'resource' => 'menu:admin',
+            ],
+            'logout' => [
+                'label' => 'Logout',
+                'route' => 'admin/admin',
+                'action' => 'logout',
+                'resource' => 'menu:admin',
             ],
         ],
     ],

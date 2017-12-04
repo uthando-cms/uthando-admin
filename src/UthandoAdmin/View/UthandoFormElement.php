@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Uthando CMS (http://www.shaunfreeman.co.uk/)
  *
@@ -37,7 +37,7 @@ class UthandoFormElement extends AbstractHelper
      * @param array $options
      * @return string
      */
-    public function __invoke(array $options = [])
+    public function __invoke(array $options)
     {
         $options            = array_merge($this->options, $options);
         $view               = $this->getView();

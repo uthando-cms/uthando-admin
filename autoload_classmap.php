@@ -7,6 +7,7 @@ return array(
     'UthandoAdmin\View\DatePicker'                        => __DIR__ . '/src/UthandoAdmin/View/DatePicker.php',
     'UthandoAdmin\View\TextEditor'                        => __DIR__ . '/src/UthandoAdmin/View/TextEditor.php',
     'UthandoAdmin\Service\AdminNavigationFactory'         => __DIR__ . '/src/UthandoAdmin/Service/AdminNavigationFactory.php',
+    'UthandoAdmin\Service\AdminUserNavigationFactory'     => __DIR__ . '/src/UthandoAdmin/Service/AdminUserNavigationFactory.php',
     'UthandoAdmin\AdminException'                         => __DIR__ . '/src/UthandoAdmin/AdminException.php',
     'UthandoAdmin\Module'                                 => __DIR__ . '/Module.php',
     'UthandoAdminTest\Bootstrap'                          => __DIR__ . '/test/Bootstrap.php',

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Uthando CMS (http://www.shaunfreeman.co.uk/)
  *
@@ -19,10 +19,7 @@ use Zend\Navigation\Service\AbstractNavigationFactory;
  */
 class AdminNavigationFactory extends AbstractNavigationFactory
 {
-    /**
-     * @return string
-     */
-    protected function getName()
+    protected function getName(): string
     {
         return 'admin';
     }

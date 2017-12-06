@@ -17,6 +17,7 @@ use UthandoUser\Form\Password;
 use UthandoUser\Form\UserEdit;
 use UthandoUser\InputFilter\User as UserInputFilter;
 use UthandoUser\Service\Authentication;
+use UthandoUser\Service\LimitLoginService;
 use UthandoUser\Service\User;
 use Zend\Authentication\AuthenticationService;
 use Zend\Form\Form;
@@ -186,6 +187,24 @@ class IndexController extends AbstractActionController
             'form' => $form,
         ]);
         $this->layout()->setTemplate('layout/basic');
+        $limitLoginService = $this->getLimitLoginService();
+
+        if (true === $limitLoginService->getOptions()->getLimitLogin()) {
+            $limitLogin = $limitLoginService->getByIp();
+
+            if (true === $limitLoginService->checkBanIp($limitLogin)) {
+                $this->flashMessenger()->addErrorMessage(
+                    sprintf(
+                        'Too many failed login attempts. Please try again in %s.',
+                        $limitLoginService->normalizeTime(
+                            $limitLoginService->getTimeDiff($limitLogin)
+                        )
+                    )
+                );
+
+                return $viewModel;
+            }
+        }
 
         if ($request->isPost()) {
             $post = $this->params()->fromPost();
@@ -215,11 +234,31 @@ class IndexController extends AbstractActionController
                 $auth->setOptions($options);
 
                 if (false === $auth->doAuthentication($data['email'], $data['passwd'])) {
-
-                    $this->flashMessenger()->addErrorMessage(
-                        'Login failed, Please try again.'
-                    );
+                    if (true === $limitLoginService->getOptions()->getLimitLogin()) {
+                        $attempts = $limitLogin->getAttempts() + 1;
+                        $limitLogin->setAttempts($attempts);
+                        $limitLogin->setAttemptTime(strtotime('now'));
+                        $message = ($attempts < $limitLoginService->getOptions()->getMaxLoginAttempts()) ?
+                            sprintf(
+                                'Login failed, Please try again. %s attempt remaining.',
+                                $limitLoginService->getOptions()->getMaxLoginAttempts() - $attempts
+                            ) :
+                            sprintf(
+                                'Too many failed login attempts. Please try again in %s.',
+                                $limitLoginService->normalizeTime(
+                                    $limitLoginService->getTimeDiff($limitLogin)
+                                )
+                            );
+                        $limitLoginService->save($limitLogin);
+                    } else {
+                        $message = 'Login failed, Please try again.';
+                    }
+                    $this->flashMessenger()->addErrorMessage($message);
                 } else {
+                    if (true === $limitLoginService->getOptions()->getLimitLogin()) {
+                        $limitLoginService->delete($limitLogin->getId());
+                    }
+
                     $this->flashMessenger()->addSuccessMessage(
                         'You have successfully logged in.'
                     );
@@ -265,6 +304,13 @@ class IndexController extends AbstractActionController
     {
         /* @var $service User */
         $service = $this->getService(User::class);
+        return $service;
+    }
+
+    protected function getLimitLoginService(): LimitLoginService
+    {
+        /* @var $service LimitLoginService */
+        $service = $this->getService(LimitLoginService::class);
         return $service;
     }
 }

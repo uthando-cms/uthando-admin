@@ -84,6 +84,10 @@ return [
         ],
     ],
     'service_manager' => [
+        'aliases' => [
+            'UthandoAdmin\Navigation'       => AdminNavigationFactory::class,
+            'UthandoAdminUser\Navigation'   => AdminUserNavigationFactory::class,
+        ],
         'factories' => [
             AdminNavigationFactory::class       => AdminNavigationFactory::class,
             AdminUserNavigationFactory::class   => AdminUserNavigationFactory::class,

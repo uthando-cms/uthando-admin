@@ -18,17 +18,26 @@
         styleTags: ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
 
     };
-    $('textarea.editable-textarea').summernote(summernoteOptions);
 
-    $('#toggle-summernote').on('click', function (e) {
+    if ($('#toggle-summernote').length) {
 
-        if (this.checked === false) {
-            $('textarea.editable-textarea').summernote('destroy');
-        } else {
+        if ($('#toggle-summernote').checked === true) {
             $('textarea.editable-textarea').summernote(summernoteOptions);
         }
 
-    });
+        $('#toggle-summernote').on('click', function (e) {
+
+            if (this.checked === false) {
+                $('textarea.editable-textarea').summernote('destroy');
+            } else {
+                $('textarea.editable-textarea').summernote(summernoteOptions);
+            }
+
+        });
+
+    } else {
+        $('textarea.editable-textarea').summernote(summernoteOptions);
+    }
 </script>
 
 <?php $this->fileManager()->summernote();?>

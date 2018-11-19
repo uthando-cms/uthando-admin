@@ -11,7 +11,7 @@
 namespace UthandoAdminTest\Controller;
 
 use UthandoAdminTest\Framework\TestCase;
-use UthandoUser\Model\User as TestUserModel;
+use UthandoUser\Model\UserModel as TestUserModel;
 
 class IndexControllerTest extends TestCase
 {

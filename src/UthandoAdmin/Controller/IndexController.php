@@ -11,14 +11,14 @@
 namespace UthandoAdmin\Controller;
 
 use UthandoCommon\Service\ServiceTrait;
-use UthandoUser\Form\ForgotPassword;
-use UthandoUser\Form\Login;
-use UthandoUser\Form\Password;
-use UthandoUser\Form\UserEdit;
-use UthandoUser\InputFilter\User as UserInputFilter;
+use UthandoUser\Form\ForgotPasswordForm;
+use UthandoUser\Form\LoginForm;
+use UthandoUser\Form\PasswordForm;
+use UthandoUser\Form\UserEditForm;
+use UthandoUser\InputFilter\UserInputFilter as UserInputFilter;
 use UthandoUser\Service\Authentication;
 use UthandoUser\Service\LimitLoginService;
-use UthandoUser\Service\User;
+use UthandoUser\Service\UserService;
 use Zend\Authentication\AuthenticationService;
 use Zend\Form\Form;
 use Zend\Http\Response;
@@ -45,7 +45,7 @@ class IndexController extends AbstractActionController
 
     public function profileAction()
     {
-        /* @var $user \UthandoUser\Model\User */
+        /* @var $user \UthandoUser\Model\UserModel */
         $user = $this->identity();
 
         $request = $this->getRequest();
@@ -86,8 +86,8 @@ class IndexController extends AbstractActionController
             }
         }
 
-        /* @var \UthandoUser\Form\BaseUserEdit $form */
-        $form = $this->getUserService()->getForm(UserEdit::class);
+        /* @var \UthandoUser\Form\UserEditForm $form */
+        $form = $this->getUserService()->getForm(UserEditForm::class);
         $form->bind($user);
 
         return new ViewModel([
@@ -98,7 +98,7 @@ class IndexController extends AbstractActionController
     public function passwordAction(): array
     {
         $request = $this->getRequest();
-        /* @var $user \UthandoUser\Model\User */
+        /* @var $user \UthandoUser\Model\UserModel */
         $user = $this->identity();
 
         if ($request->isPost()) {
@@ -121,7 +121,7 @@ class IndexController extends AbstractActionController
             );
         }
 
-        $form = $this->getUserService()->getForm(Password::class);
+        $form = $this->getUserService()->getForm(PasswordForm::class);
 
         return [
             'form' => $form,
@@ -168,7 +168,7 @@ class IndexController extends AbstractActionController
             }
         }
 
-        $form = $this->getUserService()->getForm(ForgotPassword::class);
+        $form = $this->getUserService()->getForm(ForgotPasswordForm::class);
         $viewModel->setVariables([
             'form' => $form,
         ]);
@@ -180,7 +180,7 @@ class IndexController extends AbstractActionController
     {
         $viewModel  = new ViewModel();
         $form       = $this->getService('FormElementManager')
-            ->get(Login::class);
+            ->get(LoginForm::class);
         $request    = $this->getRequest();
 
         $viewModel->setVariables([
@@ -300,10 +300,10 @@ class IndexController extends AbstractActionController
         ]);
     }
 
-    protected function getUserService(): User
+    protected function getUserService(): UserService
     {
-        /* @var $service User */
-        $service = $this->getService(User::class);
+        /* @var $service UserService */
+        $service = $this->getService(UserService::class);
         return $service;
     }
 
